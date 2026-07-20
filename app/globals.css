@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Brand tokens — Royal Blue + Gold corporate identity */
+  --color-royal-950: #060c1f;
+  --color-royal-900: #0a1633;
+  --color-royal-800: #0f2050;
+  --color-royal-700: #142c6e;
+  --color-royal-600: #1a3a8f;
+  --color-royal-500: #2148b0;
+  --color-royal-400: #3f66c9;
+  --color-royal-300: #7a94db;
+  --color-royal-100: #dbe3f5;
+  --color-royal-50: #f2f5fc;
+
+  --color-gold-700: #96741a;
+  --color-gold-600: #b3891f;
+  --color-gold-500: #cf9f2a;
+  --color-gold-400: #dfb545;
+  --color-gold-300: #ecca73;
+  --color-gold-100: #faf0d6;
+
+  --color-ink: #12161f;
+  --color-slate: #4a5266;
+  --color-light-gray: #f4f5f8;
+  --color-mid-gray: #e4e7ee;
+  --color-dark-gray: #262b36;
+
+  --background: #ffffff;
+  --foreground: var(--color-ink);
+
+  --font-display: var(--font-jakarta);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+.dark {
+  --background: #0a0e1a;
+  --foreground: #eef1f8;
+  --color-light-gray: #131826;
+  --color-mid-gray: #1c2334;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-royal-950: var(--color-royal-950);
+  --color-royal-900: var(--color-royal-900);
+  --color-royal-800: var(--color-royal-800);
+  --color-royal-700: var(--color-royal-700);
+  --color-royal-600: var(--color-royal-600);
+  --color-royal-500: var(--color-royal-500);
+  --color-royal-400: var(--color-royal-400);
+  --color-royal-300: var(--color-royal-300);
+  --color-royal-100: var(--color-royal-100);
+  --color-royal-50: var(--color-royal-50);
+
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-100: var(--color-gold-100);
+
+  --color-ink: var(--color-ink);
+  --color-slate: var(--color-slate);
+  --color-light-gray: var(--color-light-gray);
+  --color-mid-gray: var(--color-mid-gray);
+  --color-dark-gray: var(--color-dark-gray);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-royal-950);
+}
+
+/* Focus visibility — never suppressed */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Utility: glassmorphism surface used sparingly for premium accents */
+.glass-panel {
+  background: color-mix(in srgb, white 10%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in srgb, white 18%, transparent);
+}
+
+/* Utility: signature diagonal gold seam used as the site's recurring signature element */
+.gold-seam {
+  position: relative;
+}
+.gold-seam::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold-500), var(--color-gold-300) 40%, transparent 90%);
+}
+
+.container-hyperion {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-hyperion {
+    padding-inline: 2rem;
+  }
+}
+
+/* Custom scrollbar for a more premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-royal-400);
+  border-radius: 999px;
+}
