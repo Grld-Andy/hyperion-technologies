@@ -41,13 +41,17 @@ export default function WhyChooseUs() {
           {points.map((p) => (
             <div
               key={p.title}
-              className="group relative rounded-2xl border border-mid-gray p-7 transition-all hover:border-gold-400 hover:shadow-xl hover:shadow-royal-900/5"
+              className="motion-card motion-card-sheen group relative rounded-2xl border border-mid-gray p-7 hover:border-gold-400 hover:shadow-xl hover:shadow-royal-900/5"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-royal-50 text-royal-600 transition-colors group-hover:bg-royal-700 group-hover:text-gold-300">
                 <p.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-royal-950">{p.title}</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-slate">{p.description}</p>
+              <h3 className="mt-5 font-display text-lg font-semibold text-royal-950">
+                {p.title}
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-slate">
+                {p.description}
+              </p>
             </div>
           ))}
         </div>

@@ -14,13 +14,17 @@ export default function NewsPreview() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-mid-gray transition-all hover:shadow-lg hover:ring-royal-300"
+              className="motion-card motion-card-sheen group flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-mid-gray hover:shadow-lg hover:ring-royal-300"
             >
               <span className="font-mono text-[11px] uppercase tracking-wider text-gold-600">
                 {post.category} · {post.date}
               </span>
-              <h3 className="mt-3 font-display text-lg font-semibold text-royal-950">{post.title}</h3>
-              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate">{post.excerpt}</p>
+              <h3 className="mt-3 font-display text-lg font-semibold text-royal-950">
+                {post.title}
+              </h3>
+              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate">
+                {post.excerpt}
+              </p>
               <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-royal-600 group-hover:text-gold-600">
                 Read more <ArrowRight className="h-3.5 w-3.5" />
               </span>

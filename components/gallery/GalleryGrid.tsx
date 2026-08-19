@@ -20,7 +20,9 @@ export default function GalleryGrid() {
   const [lightbox, setLightbox] = useState<string | null>(null);
 
   const filtered =
-    active === "All" ? galleryImages : galleryImages.filter((g) => g.category === active);
+    active === "All"
+      ? galleryImages
+      : galleryImages.filter((g) => g.category === active);
 
   const active_image = galleryImages.find((g) => g.id === lightbox);
 
@@ -48,12 +50,14 @@ export default function GalleryGrid() {
           <button
             key={img.id}
             onClick={() => setLightbox(img.id)}
-            className="block w-full text-left"
+            className="motion-card motion-card-sheen block w-full rounded-2xl text-left"
             aria-label={`View ${img.title}`}
           >
             <PlaceholderMedia
               label={img.title}
-              aspect={i % 3 === 0 ? "portrait" : i % 3 === 1 ? "square" : "video"}
+              aspect={
+                i % 3 === 0 ? "portrait" : i % 3 === 1 ? "square" : "video"
+              }
               className="transition-transform duration-300 hover:scale-[1.02]"
             />
           </button>

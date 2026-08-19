@@ -17,7 +17,7 @@ export default function TrainingPrograms() {
             <Link
               key={cert.slug}
               href={`/certifications/${cert.slug}`}
-              className="group flex flex-col rounded-2xl border border-mid-gray p-6 transition-all hover:-translate-y-1 hover:border-transparent hover:bg-royal-950 hover:shadow-2xl hover:shadow-royal-950/20"
+              className="motion-card motion-card-sheen group flex flex-col rounded-2xl border border-mid-gray p-6 hover:-translate-y-1 hover:border-transparent hover:bg-royal-950 hover:shadow-2xl hover:shadow-royal-950/20"
             >
               <span className="font-mono text-[11px] uppercase tracking-wider text-gold-600 group-hover:text-gold-300">
                 {cert.vendor} · {cert.level}

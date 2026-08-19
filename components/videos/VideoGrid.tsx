@@ -44,16 +44,24 @@ export default function VideoGrid() {
       {featured && (
         <button
           onClick={() => setPlayingId(featured.id)}
-          className="group relative block w-full overflow-hidden rounded-2xl text-left"
+          className="motion-card motion-card-sheen group relative block w-full overflow-hidden rounded-2xl text-left"
         >
-          <PlaceholderMedia label={`Featured: ${featured.title}`} kind="video" aspect="wide" />
+          <PlaceholderMedia
+            label={`Featured: ${featured.title}`}
+            kind="video"
+            aspect="wide"
+          />
           <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-6">
             <div>
               <span className="rounded-full bg-gold-500 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-royal-950">
                 Featured
               </span>
-              <h3 className="mt-3 font-display text-2xl font-bold text-white">{featured.title}</h3>
-              <p className="mt-1 text-sm text-white/70">{featured.category} · {featured.duration}</p>
+              <h3 className="mt-3 font-display text-2xl font-bold text-white">
+                {featured.title}
+              </h3>
+              <p className="mt-1 text-sm text-white/70">
+                {featured.category} · {featured.duration}
+              </p>
             </div>
           </div>
         </button>
@@ -89,7 +97,11 @@ export default function VideoGrid() {
 
       <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((v) => (
-          <button key={v.id} onClick={() => setPlayingId(v.id)} className="group text-left">
+          <button
+            key={v.id}
+            onClick={() => setPlayingId(v.id)}
+            className="motion-card motion-card-sheen group rounded-2xl p-2 text-left hover:bg-royal-50"
+          >
             <div className="relative">
               <PlaceholderMedia label={v.title} kind="video" aspect="video" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
@@ -98,13 +110,19 @@ export default function VideoGrid() {
                 </span>
               </div>
             </div>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-gold-600">{v.category}</p>
-            <h3 className="mt-1 font-display text-sm font-semibold text-royal-950">{v.title}</h3>
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-gold-600">
+              {v.category}
+            </p>
+            <h3 className="mt-1 font-display text-sm font-semibold text-royal-950">
+              {v.title}
+            </h3>
             <p className="mt-1 text-xs text-slate">{v.duration}</p>
           </button>
         ))}
         {filtered.length === 0 && (
-          <p className="col-span-full py-10 text-center text-sm text-slate">No videos match your search.</p>
+          <p className="col-span-full py-10 text-center text-sm text-slate">
+            No videos match your search.
+          </p>
         )}
       </div>
 
@@ -122,9 +140,18 @@ export default function VideoGrid() {
           >
             <X className="h-5 w-5" />
           </button>
-          <div className="w-full max-w-2xl" onClick={(e) => e.stopPropagation()}>
-            <PlaceholderMedia label={`Now Playing: ${playing.title}`} kind="video" aspect="video" />
-            <p className="mt-4 text-center text-sm text-white/80">{playing.description}</p>
+          <div
+            className="w-full max-w-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PlaceholderMedia
+              label={`Now Playing: ${playing.title}`}
+              kind="video"
+              aspect="video"
+            />
+            <p className="mt-4 text-center text-sm text-white/80">
+              {playing.description}
+            </p>
           </div>
         </div>
       )}
