@@ -6,7 +6,7 @@ import { galleryImages } from "@/lib/data/site-content";
 export default function GalleryPreview() {
   const preview = galleryImages.slice(0, 6);
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-card">
       <div className="container-hyperion">
         <SectionHeading
           eyebrow="Inside Hyperion"

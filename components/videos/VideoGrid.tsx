@@ -51,15 +51,15 @@ export default function VideoGrid() {
             kind="video"
             aspect="wide"
           />
-          <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-6">
+          <div className="absolute inset-0 flex items-end bg-primary-deep/80 p-6">
             <div>
-              <span className="rounded-full bg-gold-500 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-royal-950">
+              <span className="rounded-full bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-deep">
                 Featured
               </span>
-              <h3 className="mt-3 font-display text-2xl font-bold text-white">
+              <h3 className="mt-3 font-display text-2xl font-bold text-primary-foreground">
                 {featured.title}
               </h3>
-              <p className="mt-1 text-sm text-white/70">
+              <p className="mt-1 text-sm text-primary-foreground/70">
                 {featured.category} · {featured.duration}
               </p>
             </div>
@@ -69,13 +69,13 @@ export default function VideoGrid() {
 
       <div className="mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
         <div className="relative w-full md:max-w-xs">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate/50" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search videos…"
-            className="w-full rounded-full border border-mid-gray py-2.5 pl-10 pr-4 text-sm outline-none focus:border-royal-400"
+            className="w-full rounded-full border border-border py-2.5 pl-10 pr-4 text-sm outline-none focus:border-primary-glow"
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -85,8 +85,8 @@ export default function VideoGrid() {
               onClick={() => setCategory(c)}
               className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
                 category === c
-                  ? "border-royal-700 bg-royal-700 text-white"
-                  : "border-mid-gray text-slate hover:border-royal-400"
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border text-muted-foreground hover:border-primary-glow"
               }`}
             >
               {c}
@@ -100,27 +100,27 @@ export default function VideoGrid() {
           <button
             key={v.id}
             onClick={() => setPlayingId(v.id)}
-            className="motion-card motion-card-sheen group rounded-2xl p-2 text-left hover:bg-royal-50"
+            className="motion-card motion-card-sheen group rounded-2xl p-2 text-left hover:bg-accent"
           >
             <div className="relative">
               <PlaceholderMedia label={v.title} kind="video" aspect="video" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-royal-900">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-card/90 text-primary-deep">
                   <Play className="h-5 w-5" fill="currentColor" />
                 </span>
               </div>
             </div>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-gold-600">
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-gold">
               {v.category}
             </p>
-            <h3 className="mt-1 font-display text-sm font-semibold text-royal-950">
+            <h3 className="mt-1 font-display text-sm font-semibold text-primary-deep">
               {v.title}
             </h3>
-            <p className="mt-1 text-xs text-slate">{v.duration}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{v.duration}</p>
           </button>
         ))}
         {filtered.length === 0 && (
-          <p className="col-span-full py-10 text-center text-sm text-slate">
+          <p className="col-span-full py-10 text-center text-sm text-muted-foreground">
             No videos match your search.
           </p>
         )}
@@ -135,7 +135,7 @@ export default function VideoGrid() {
         >
           <button
             aria-label="Close"
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-card/10 text-primary-foreground hover:bg-card/20"
             onClick={() => setPlayingId(null)}
           >
             <X className="h-5 w-5" />
@@ -149,7 +149,7 @@ export default function VideoGrid() {
               kind="video"
               aspect="video"
             />
-            <p className="mt-4 text-center text-sm text-white/80">
+            <p className="mt-4 text-center text-sm text-primary-foreground/80">
               {playing.description}
             </p>
           </div>

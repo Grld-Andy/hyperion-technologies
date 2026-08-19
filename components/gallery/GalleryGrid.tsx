@@ -35,8 +35,8 @@ export default function GalleryGrid() {
             onClick={() => setActive(cat)}
             className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
               active === cat
-                ? "border-royal-700 bg-royal-700 text-white"
-                : "border-mid-gray text-slate hover:border-royal-400 hover:text-royal-700"
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border text-muted-foreground hover:border-primary-glow hover:text-primary"
             }`}
           >
             {cat}
@@ -73,14 +73,14 @@ export default function GalleryGrid() {
         >
           <button
             aria-label="Close"
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-card/10 text-primary-foreground hover:bg-card/20"
             onClick={() => setLightbox(null)}
           >
             <X className="h-5 w-5" />
           </button>
           <div className="w-full max-w-xl" onClick={(e) => e.stopPropagation()}>
             <PlaceholderMedia label={active_image.title} aspect="wide" />
-            <p className="mt-4 text-center text-sm text-white/80">
+            <p className="mt-4 text-center text-sm text-primary-foreground/80">
               {active_image.title} · {active_image.category}
             </p>
           </div>

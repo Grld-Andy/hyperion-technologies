@@ -35,25 +35,25 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-royal-950 to-royal-800 py-20 text-white">
+      <section className="bg-primary-deep py-20 text-primary-foreground">
         <div className="container-hyperion text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">About Us</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">About Us</span>
           <h1 className="mt-4 font-display text-4xl font-bold md:text-5xl">{SITE.name}</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-royal-100/80">{SITE.description}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-primary-foreground/80">{SITE.description}</p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container-hyperion grid items-center gap-12 lg:grid-cols-2">
           <PlaceholderMedia label="Hyperion Technologies training facility" aspect="wide" />
           <div>
             <SectionHeading eyebrow="Our Story" title="Built to bridge classroom theory and IT careers" align="left" />
-            <p className="mt-6 text-slate leading-relaxed">
+            <p className="mt-6 text-muted-foreground leading-relaxed">
               Hyperion Technologies was founded to close a real gap: talented students and
               professionals who understood IT concepts on paper but lacked the hands-on,
               certification-aligned training to translate that knowledge into a career.
             </p>
-            <p className="mt-4 text-slate leading-relaxed">
+            <p className="mt-4 text-muted-foreground leading-relaxed">
               Today, we combine professional Cisco and CompTIA certification training with a
               full suite of IT services — giving students a practical, real-world environment
               to learn in, and giving businesses a dependable local technology partner.
@@ -65,32 +65,32 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-light-gray py-24">
+      <section className="bg-muted py-24">
         <div className="container-hyperion">
           <SectionHeading eyebrow="What Drives Us" title="Mission, vision, and values" />
           <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
             {values.map((v) => (
-              <div key={v.title} className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-mid-gray">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-royal-50 text-royal-600">
+              <div key={v.title} className="rounded-2xl bg-card p-8 shadow-sm ring-1 ring-border">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-primary">
                   <v.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-royal-950">{v.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate">{v.text}</p>
+                <h3 className="mt-5 font-display text-lg font-semibold text-primary-deep">{v.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white text-center">
+      <section className="py-20 bg-card text-center">
         <div className="container-hyperion">
-          <p className="text-slate">
+          <p className="text-muted-foreground">
             Curious about our specific programs?{" "}
-            <Link href="/services" className="font-semibold text-royal-600 hover:text-gold-600">
+            <Link href="/services" className="font-semibold text-primary hover:text-gold">
               Explore our services
             </Link>{" "}
             or{" "}
-            <Link href="/certifications" className="font-semibold text-royal-600 hover:text-gold-600">
+            <Link href="/certifications" className="font-semibold text-primary hover:text-gold">
               browse certifications
             </Link>
             .

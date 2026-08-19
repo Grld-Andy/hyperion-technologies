@@ -5,7 +5,7 @@ import { testimonials } from "@/lib/data/site-content";
 
 export default function TestimonialsPreview() {
   return (
-    <section className="bg-light-gray py-24">
+    <section className="bg-muted py-24">
       <div className="container-hyperion">
         <SectionHeading
           eyebrow="Student Voices"
@@ -15,17 +15,17 @@ export default function TestimonialsPreview() {
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="motion-card motion-card-sheen rounded-2xl bg-white p-7 shadow-sm ring-1 ring-mid-gray hover:shadow-lg"
+              className="motion-card motion-card-sheen rounded-2xl bg-card p-7 shadow-sm ring-1 ring-border hover:shadow-lg"
             >
-              <Quote className="h-6 w-6 text-gold-400" />
-              <blockquote className="mt-4 text-sm leading-relaxed text-slate">
+              <Quote className="h-6 w-6 text-gold-soft" />
+              <blockquote className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-5 border-t border-mid-gray pt-4">
-                <p className="font-display text-sm font-semibold text-royal-950">
+              <figcaption className="mt-5 border-t border-border pt-4">
+                <p className="font-display text-sm font-semibold text-primary-deep">
                   {t.name}
                 </p>
-                <p className="text-xs text-slate">
+                <p className="text-xs text-muted-foreground">
                   {t.role} · {t.program}
                 </p>
               </figcaption>
@@ -36,7 +36,7 @@ export default function TestimonialsPreview() {
           <Button
             href="/testimonials"
             variant="outline-light"
-            className="!text-royal-700 !border-royal-300 hover:!bg-white"
+            className="!text-primary !border-primary-glow hover:!bg-card"
           >
             Read More Stories
           </Button>

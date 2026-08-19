@@ -30,29 +30,29 @@ const curricula = ["Ghana Education Curriculum", "British Curriculum", "IGCSE", 
 export default function FounderPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-royal-950 to-royal-800 py-20 text-white">
+      <section className="bg-primary-deep py-20 text-primary-foreground">
         <div className="container-hyperion text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">The Founder</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">The Founder</span>
           <h1 className="mt-4 font-display text-4xl font-bold md:text-5xl">Michael Quarshie</h1>
-          <p className="mx-auto mt-4 max-w-xl text-royal-100/80">
+          <p className="mx-auto mt-4 max-w-xl text-primary-foreground/80">
             Founder of Hyperion Technologies · Accredited Cisco Networking Academy (NetAcad) Instructor
           </p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container-hyperion grid gap-12 lg:grid-cols-[380px_1fr]">
           <div>
             <PlaceholderMedia label="Michael Quarshie, Founder" aspect="portrait" />
-            <div className="mt-6 rounded-2xl bg-light-gray p-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">Nationality</p>
-              <p className="mt-1 font-display text-lg font-semibold text-royal-950">Ghanaian</p>
+            <div className="mt-6 rounded-2xl bg-muted p-6">
+              <p className="text-xs font-semibold uppercase tracking-wider text-gold">Nationality</p>
+              <p className="mt-1 font-display text-lg font-semibold text-primary-deep">Ghanaian</p>
             </div>
           </div>
 
           <div className="space-y-12">
             <div>
-              <p className="text-slate leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Michael Quarshie founded Hyperion Technologies to bring internationally
                 recognized IT certification training to Accra, grounded in over a decade of
                 real classroom experience. As an accredited Cisco Networking Academy (NetAcad)
@@ -60,7 +60,7 @@ export default function FounderPage() {
                 multiple curricula, giving him a rare fluency in how students from very
                 different educational backgrounds actually learn technical material.
               </p>
-              <p className="mt-4 text-slate leading-relaxed">
+              <p className="mt-4 text-muted-foreground leading-relaxed">
                 His teaching experience spans the Ghana Education Curriculum, the British
                 Curriculum, IGCSE, AS Level, and A Level — a breadth that now shapes how
                 Hyperion structures its own certification tracks for a diverse student body.
@@ -71,11 +71,11 @@ export default function FounderPage() {
               <SectionHeading eyebrow="Background" title="Education" align="left" />
               <div className="mt-6 space-y-4">
                 {education.map((e) => (
-                  <div key={e.credential} className="flex items-start gap-3 rounded-xl border border-mid-gray p-4">
-                    <GraduationCap className="mt-0.5 h-5 w-5 shrink-0 text-royal-600" />
+                  <div key={e.credential} className="flex items-start gap-3 rounded-xl border border-border p-4">
+                    <GraduationCap className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <div>
-                      <p className="font-semibold text-royal-950">{e.credential}</p>
-                      <p className="text-sm text-slate">{e.school}</p>
+                      <p className="font-semibold text-primary-deep">{e.credential}</p>
+                      <p className="text-sm text-muted-foreground">{e.school}</p>
                     </div>
                   </div>
                 ))}
@@ -86,8 +86,8 @@ export default function FounderPage() {
               <SectionHeading eyebrow="Credentials" title="Professional Certifications" align="left" />
               <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {certifications.map((c) => (
-                  <li key={c} className="flex items-center gap-2.5 rounded-xl bg-light-gray px-4 py-3 text-sm font-medium text-royal-950">
-                    <BadgeCheck className="h-4 w-4 shrink-0 text-gold-600" /> {c}
+                  <li key={c} className="flex items-center gap-2.5 rounded-xl bg-muted px-4 py-3 text-sm font-medium text-primary-deep">
+                    <BadgeCheck className="h-4 w-4 shrink-0 text-gold" /> {c}
                   </li>
                 ))}
               </ul>
@@ -95,21 +95,21 @@ export default function FounderPage() {
 
             <div>
               <SectionHeading eyebrow="Experience" title="Professional Experience" align="left" />
-              <ul className="mt-6 space-y-3 text-sm text-slate">
+              <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2.5">
-                  <Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-royal-600" />
+                  <Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   Accredited Cisco Networking Academy (NetAcad) Instructor
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-royal-600" />
+                  <Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   More than 10 years of teaching experience
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-royal-600" />
+                  <Briefcase className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   Extensive experience in networking, systems administration, and professional IT training
                 </li>
               </ul>
-              <p className="mt-4 text-sm text-slate">Curricula taught: {curricula.join(", ")}.</p>
+              <p className="mt-4 text-sm text-muted-foreground">Curricula taught: {curricula.join(", ")}.</p>
             </div>
           </div>
         </div>

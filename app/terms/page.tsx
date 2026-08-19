@@ -10,13 +10,13 @@ export const metadata: Metadata = buildMetadata({
 
 export default function TermsPage() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-card">
       <div className="container-hyperion max-w-3xl">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">Legal</span>
-        <h1 className="mt-4 font-display text-3xl font-bold text-royal-950 md:text-4xl">Terms &amp; Conditions</h1>
-        <p className="mt-2 text-sm text-slate">Last updated: July 19, 2026</p>
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Legal</span>
+        <h1 className="mt-4 font-display text-3xl font-bold text-primary-deep md:text-4xl">Terms &amp; Conditions</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Last updated: July 19, 2026</p>
 
-        <div className="prose prose-royal mt-10 max-w-none prose-headings:font-display prose-headings:text-royal-950 prose-a:text-royal-600">
+        <div className="prose prose-royal mt-10 max-w-none prose-headings:font-display prose-headings:text-primary-deep prose-a:text-primary">
           <p>
             These Terms &amp; Conditions govern your use of the {SITE.name} website and your
             enrollment in our training programs and services. This is a template document —

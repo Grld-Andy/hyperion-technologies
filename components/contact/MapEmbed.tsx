@@ -2,7 +2,7 @@ import { CONTACT } from "@/lib/constants";
 
 export default function MapEmbed() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-mid-gray">
+    <div className="overflow-hidden rounded-2xl border border-border">
       <iframe
         title="Hyperion Technologies location map"
         src={CONTACT.mapEmbedSrc}

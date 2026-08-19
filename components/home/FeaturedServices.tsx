@@ -7,7 +7,7 @@ import { services } from "@/lib/data/services";
 export default function FeaturedServices() {
   const featured = services.slice(0, 6);
   return (
-    <section className="bg-light-gray py-24">
+    <section className="bg-muted py-24">
       <div className="container-hyperion">
         <SectionHeading
           eyebrow="What We Do"
@@ -19,18 +19,18 @@ export default function FeaturedServices() {
             <Link
               key={s.slug}
               href="/services"
-              className="motion-card motion-card-sheen group relative flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-mid-gray hover:shadow-xl hover:ring-royal-300"
+              className="motion-card motion-card-sheen group relative flex flex-col rounded-2xl bg-card p-7 shadow-sm ring-1 ring-border hover:shadow-xl hover:ring-primary-glow"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-royal-700 to-royal-500 text-gold-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-gold-soft">
                 <s.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-royal-950">
+              <h3 className="mt-5 font-display text-lg font-semibold text-primary-deep">
                 {s.name}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {s.summary}
               </p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-royal-600 group-hover:text-gold-600">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:text-gold">
                 Learn more <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
             </Link>
@@ -40,7 +40,7 @@ export default function FeaturedServices() {
           <Button
             href="/services"
             variant="outline-light"
-            className="!text-royal-700 !border-royal-300 hover:!bg-royal-50"
+            className="!text-primary !border-primary-glow hover:!bg-accent"
           >
             View All Services
           </Button>

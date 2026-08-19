@@ -30,7 +30,7 @@ const points = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-card">
       <div className="container-hyperion">
         <SectionHeading
           eyebrow="Why Hyperion"
@@ -41,15 +41,15 @@ export default function WhyChooseUs() {
           {points.map((p) => (
             <div
               key={p.title}
-              className="motion-card motion-card-sheen group relative rounded-2xl border border-mid-gray p-7 hover:border-gold-400 hover:shadow-xl hover:shadow-royal-900/5"
+              className="motion-card motion-card-sheen group relative rounded-2xl border border-border p-7 hover:border-gold-soft hover:shadow-xl hover:shadow-primary-deep/5"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-royal-50 text-royal-600 transition-colors group-hover:bg-royal-700 group-hover:text-gold-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-primary transition-colors group-hover:bg-primary group-hover:text-gold-soft">
                 <p.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-royal-950">
+              <h3 className="mt-5 font-display text-lg font-semibold text-primary-deep">
                 {p.title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-slate">
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
             </div>

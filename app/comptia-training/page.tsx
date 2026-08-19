@@ -26,34 +26,34 @@ const resources = [
 export default function CompTIATrainingPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-royal-950 to-royal-800 py-20 text-white">
+      <section className="bg-primary-deep py-20 text-primary-foreground">
         <div className="container-hyperion text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">CompTIA Track</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">CompTIA Track</span>
           <h1 className="mt-4 font-display text-4xl font-bold md:text-5xl">CompTIA Certification Training</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-royal-100/80">
+          <p className="mx-auto mt-4 max-w-2xl text-primary-foreground/80">
             Vendor-neutral fundamentals that build a strong, portable IT foundation —
             ideal on their own or alongside Cisco training.
           </p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-card">
         <div className="container-hyperion">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {comptia.map((c) => (
-              <div key={c.slug} className="rounded-2xl border border-mid-gray p-8">
-                <h2 className="font-display text-2xl font-bold text-royal-950">{c.name}</h2>
-                <p className="mt-2 text-sm text-slate">{c.overview}</p>
+              <div key={c.slug} className="rounded-2xl border border-border p-8">
+                <h2 className="font-display text-2xl font-bold text-primary-deep">{c.name}</h2>
+                <p className="mt-2 text-sm text-muted-foreground">{c.overview}</p>
                 <div className="mt-5 space-y-2">
                   {c.skillsLearned.slice(0, 4).map((s) => (
-                    <p key={s} className="flex items-start gap-2 text-sm text-royal-950">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" /> {s}
+                    <p key={s} className="flex items-start gap-2 text-sm text-primary-deep">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> {s}
                     </p>
                   ))}
                 </div>
                 <Link
                   href={`/certifications/${c.slug}`}
-                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-royal-600 hover:text-gold-600"
+                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-gold"
                 >
                   Full program details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
@@ -63,11 +63,11 @@ export default function CompTIATrainingPage() {
         </div>
       </section>
 
-      <section className="bg-light-gray py-24">
+      <section className="bg-muted py-24">
         <div className="container-hyperion grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading eyebrow="Career Paths" title="Where CompTIA certifications lead" align="left" />
-            <p className="mt-6 text-sm leading-relaxed text-slate">
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               CompTIA A+ is widely used as the entry credential for help desk and IT support
               roles, while Network+ builds vendor-neutral networking knowledge that
               complements (or precedes) Cisco-specific training. Together they form a strong,
@@ -75,7 +75,7 @@ export default function CompTIATrainingPage() {
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-royal-950">Official CompTIA Resources</p>
+            <p className="text-sm font-semibold text-primary-deep">Official CompTIA Resources</p>
             <div className="mt-4 flex flex-col gap-3">
               {resources.map((r) => (
                 <a
@@ -83,7 +83,7 @@ export default function CompTIATrainingPage() {
                   href={r.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between rounded-lg border border-mid-gray bg-white px-4 py-3 text-sm font-medium text-royal-700 hover:border-gold-400 hover:text-gold-700"
+                  className="flex items-center justify-between rounded-lg border border-border bg-card px-4 py-3 text-sm font-medium text-primary hover:border-gold-soft hover:text-gold"
                 >
                   {r.label} <ExternalLink className="h-3.5 w-3.5" />
                 </a>
@@ -93,12 +93,12 @@ export default function CompTIATrainingPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white text-center">
+      <section className="py-16 bg-card text-center">
         <div className="container-hyperion">
           <Button href="/contact" size="lg">
             Start Your CompTIA Journey
           </Button>
-          <p className="mt-8 text-xs leading-relaxed text-slate/70">{TRADEMARK_NOTICE}</p>
+          <p className="mt-8 text-xs leading-relaxed text-muted-foreground/70">{TRADEMARK_NOTICE}</p>
         </div>
       </section>
     </>

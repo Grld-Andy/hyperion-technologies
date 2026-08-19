@@ -30,18 +30,18 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <article className="py-20 bg-white">
+    <article className="py-20 bg-card">
       <div className="container-hyperion max-w-3xl">
-        <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-medium text-royal-600 hover:text-gold-600">
+        <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-gold">
           <ArrowLeft className="h-4 w-4" /> Back to Blog
         </Link>
-        <span className="mt-8 block font-mono text-xs uppercase tracking-wider text-gold-600">
+        <span className="mt-8 block font-mono text-xs uppercase tracking-wider text-gold">
           {post.category} · {post.date}
         </span>
-        <h1 className="mt-3 font-display text-3xl font-bold text-royal-950 md:text-4xl">{post.title}</h1>
-        <p className="mt-3 text-sm text-slate">By {post.author}</p>
+        <h1 className="mt-3 font-display text-3xl font-bold text-primary-deep md:text-4xl">{post.title}</h1>
+        <p className="mt-3 text-sm text-muted-foreground">By {post.author}</p>
         <div
-          className="prose prose-royal mt-10 max-w-none prose-headings:font-display prose-headings:text-royal-950 prose-a:text-royal-600 prose-strong:text-royal-950"
+          className="prose prose-royal mt-10 max-w-none prose-headings:font-display prose-headings:text-primary-deep prose-a:text-primary prose-strong:text-primary-deep"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
       </div>

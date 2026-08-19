@@ -38,24 +38,28 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 dark:bg-royal-950/90 backdrop-blur-md shadow-md shadow-royal-950/5"
+          ? "bg-white dark:bg-primary-deep backdrop-blur-md shadow-md shadow-primary-deep/30"
           : "bg-transparent"
       }`}
     >
       <div className="container-hyperion flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-royal-700 to-royal-500 font-display text-lg font-bold text-gold-300">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary-glow font-display text-lg font-bold text-gold-soft">
             H
           </span>
           <span className="flex flex-col leading-none">
             <span
               className={`font-display text-lg font-bold ${
-                scrolled ? "text-royal-950 dark:text-white" : "text-royal-950 dark:text-white"
+                scrolled
+                  ? "text-primary-deep dark:text-white"
+                  : "text-primary-deep dark:text-white"
               }`}
             >
               {SITE.shortName}
             </span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-gold-600">Technologies</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-gold">
+              Technologies
+            </span>
           </span>
         </Link>
 
@@ -69,18 +73,18 @@ export default function Navbar() {
             >
               <Link
                 href={link.href}
-                className="flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-ink/80 hover:text-royal-600 dark:text-white/80 dark:hover:text-gold-300 transition-colors"
+                className="flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-foreground/80 hover:text-primary dark:text-white/80 dark:hover:text-gold-soft transition-colors"
               >
                 {link.label}
                 {link.children && <ChevronDown className="h-3.5 w-3.5" />}
               </Link>
               {link.children && openDropdown === link.href && (
-                <div className="absolute left-0 top-full w-56 rounded-xl border border-mid-gray bg-white p-2 shadow-xl dark:bg-royal-900 dark:border-royal-700">
+                <div className="absolute left-0 top-full w-56 rounded-xl border border-border bg-card p-2 shadow-xl dark:bg-primary-deep dark:border-primary">
                   {link.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-royal-50 hover:text-royal-700 dark:text-white/80 dark:hover:bg-royal-800"
+                      className="block rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-primary dark:text-white/80 dark:hover:bg-primary"
                     >
                       {child.label}
                     </Link>
@@ -95,24 +99,19 @@ export default function Navbar() {
           <button
             aria-label="Toggle dark mode"
             onClick={() => setDark((d) => !d)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-mid-gray text-ink/70 hover:text-royal-600 dark:border-royal-700 dark:text-white/70"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/70 hover:text-primary dark:border-primary dark:text-white/70"
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
-          <a
-            href={`tel:${CONTACT.phoneIntl}`}
-            className="flex items-center gap-2 text-sm font-medium text-ink/80 dark:text-white/80"
-          >
-            <Phone className="h-4 w-4 text-gold-600" /> {CONTACT.phone}
-          </a>
-          <Button href="/contact" size="sm">
+
+          <Button href="/contact" size="sm" className="text-center">
             Enroll Now
           </Button>
         </div>
 
         <button
           aria-label="Open menu"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-mid-gray text-ink lg:hidden dark:border-royal-700 dark:text-white"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden dark:border-primary dark:text-white"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -120,22 +119,22 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-mid-gray bg-white px-5 pb-6 pt-2 lg:hidden dark:bg-royal-950 dark:border-royal-800">
+        <div className="border-t border-border bg-card px-5 pb-6 pt-2 lg:hidden dark:bg-primary-deep dark:border-primary">
           {NAV_LINKS.map((link) => (
             <div key={link.href} className="py-1">
               <Link
                 href={link.href}
-                className="block rounded-lg px-2 py-2.5 font-medium text-ink dark:text-white"
+                className="block rounded-lg px-2 py-2.5 font-medium text-foreground dark:text-white"
               >
                 {link.label}
               </Link>
               {link.children && (
-                <div className="ml-4 border-l border-mid-gray pl-3 dark:border-royal-700">
+                <div className="ml-4 border-l border-border pl-3 dark:border-primary">
                   {link.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block rounded-lg px-2 py-2 text-sm text-slate dark:text-white/70"
+                      className="block rounded-lg px-2 py-2 text-sm text-muted-foreground dark:text-white/70"
                     >
                       {child.label}
                     </Link>
@@ -145,8 +144,11 @@ export default function Navbar() {
             </div>
           ))}
           <div className="mt-4 flex flex-col gap-3">
-            <a href={`tel:${CONTACT.phoneIntl}`} className="flex items-center gap-2 text-sm font-medium">
-              <Phone className="h-4 w-4 text-gold-600" /> {CONTACT.phone}
+            <a
+              href={`tel:${CONTACT.phoneIntl}`}
+              className="flex items-center gap-2 text-sm font-medium text-foreground dark:text-white"
+            >
+              <Phone className="h-4 w-4 text-gold" /> {CONTACT.phone}
             </a>
             <Button href="/contact" className="w-full">
               Enroll Now

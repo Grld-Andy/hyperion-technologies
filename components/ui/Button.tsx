@@ -30,12 +30,12 @@ const base =
 
 const variants: Record<NonNullable<CommonProps["variant"]>, string> = {
   primary:
-    "bg-gradient-to-r from-royal-600 to-royal-500 text-white shadow-lg shadow-royal-900/20 hover:shadow-xl hover:shadow-royal-900/30 hover:-translate-y-0.5",
+    "bg-primary text-primary-foreground shadow-lg shadow-primary-deep/20 hover:shadow-xl hover:shadow-primary-deep/30 hover:-translate-y-0.5",
   secondary:
-    "bg-gradient-to-r from-gold-500 to-gold-400 text-royal-950 shadow-lg shadow-gold-500/20 hover:shadow-xl hover:-translate-y-0.5",
-  ghost: "bg-white/10 text-white hover:bg-white/20",
+    "bg-gold text-primary-deep shadow-lg shadow-gold/20 hover:shadow-xl hover:-translate-y-0.5",
+  ghost: "bg-card/10 text-primary-foreground hover:bg-card/20",
   "outline-light":
-    "border border-white/30 text-white hover:bg-white/10 hover:border-white/60",
+    "border border-primary-foreground/30 text-primary-foreground hover:bg-card/10 hover:border-primary-foreground/60",
 };
 
 const sizes: Record<NonNullable<CommonProps["size"]>, string> = {

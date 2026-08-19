@@ -30,8 +30,7 @@ export default function PlaceholderMedia({
     <div
       className={`relative overflow-hidden rounded-2xl ${aspectClass[aspect]} ${className}`}
       style={{
-        background:
-          "linear-gradient(135deg, var(--color-royal-800), var(--color-royal-600) 55%, var(--color-royal-400))",
+        background: "var(--color-primary)",
       }}
     >
       <div
@@ -43,8 +42,10 @@ export default function PlaceholderMedia({
         }}
       />
       <div className="relative z-10 flex h-full flex-col items-center justify-center gap-3 p-4 text-center">
-        <Icon className="h-8 w-8 text-gold-300" strokeWidth={1.5} />
-        <p className="text-xs font-medium uppercase tracking-wider text-white/85">{label}</p>
+        <Icon className="h-8 w-8 text-gold-soft" strokeWidth={1.5} />
+        <p className="text-xs font-medium uppercase tracking-wider text-primary-foreground/85">
+          {label}
+        </p>
       </div>
     </div>
   );
