@@ -257,7 +257,8 @@ export function HomeScreen() {
               display: 'flex',
               gap: 16,
               overflowX: 'auto',
-              paddingBottom: 8,
+              paddingTop: 16,
+              paddingBottom: 16,
               scrollSnapType: 'x proximity',
             }}
           >
