@@ -38,8 +38,8 @@ export function AboutScreen() {
               suite of IT services, giving students a practical, real-world environment to learn in,
               and giving businesses a dependable local technology partner.
             </p>
-            <Button to={routes.founder} variant="blue" style={{ marginTop: 22 }}>
-              Meet the Founder <ArrowRight size={15} aria-hidden />
+            <Button to={routes.team} variant="blue" style={{ marginTop: 22 }}>
+              Meet the Team <ArrowRight size={15} aria-hidden />
             </Button>
           </div>
         </div>

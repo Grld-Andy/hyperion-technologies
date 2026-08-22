@@ -8,7 +8,7 @@ import { team } from '../constants/team';
 
 const eyebrowClass = 'm-0 font-mono text-xs font-semibold tracking-[0.1em] text-blue uppercase';
 
-export function FounderScreen() {
+export function TeamScreen() {
   return (
     <>
       <Section background="page" padding="30px" style={{ paddingBottom: 0 }}>
@@ -18,7 +18,7 @@ export function FounderScreen() {
 
       <Section background="page" padding="48px" style={{ paddingBottom: 96 }}>
         <div className="hy-split grid grid-cols-[340px_1fr] gap-14">
-          <div className="sticky top-24 flex flex-col gap-5 self-start">
+          <div className="hy-team-portrait sticky top-24 flex flex-col gap-5 self-start">
             <img
               src={founderPortrait}
               alt={`${founder.name}, Founder`}

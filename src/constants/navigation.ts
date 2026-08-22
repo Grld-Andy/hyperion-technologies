@@ -1,7 +1,7 @@
 export const routes = {
   home: '/',
   about: '/about',
-  founder: '/team',
+  team: '/team',
   services: '/services',
   certifications: '/certifications',
   certificationDetail: (slug: string) => `/certifications/${slug}`,
@@ -34,10 +34,10 @@ export const navItems: NavItem[] = [
   {
     key: 'about',
     label: 'About',
-    matches: [routes.about, routes.founder],
+    matches: [routes.about, routes.team],
     children: [
       { label: 'About Us', to: routes.about },
-      { label: 'The Team', to: routes.founder },
+      { label: 'The Team', to: routes.team },
     ],
   },
   {
@@ -77,7 +77,7 @@ export interface FooterLink {
 
 export const footerCompanyLinks: FooterLink[] = [
   { label: 'About Us', to: routes.about },
-  { label: 'The Team', to: routes.founder },
+  { label: 'The Team', to: routes.team },
   { label: 'Blog', to: routes.blog },
   { label: 'Contact', to: routes.contact },
 ];

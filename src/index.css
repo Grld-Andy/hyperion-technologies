@@ -326,6 +326,15 @@ button {
   .hy-mobile-toggle {
     display: flex !important;
   }
+  .hy-team-portrait {
+    position: static !important;
+    top: auto !important;
+  }
+  .hy-team-portrait img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 640px) {
