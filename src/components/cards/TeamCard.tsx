@@ -1,26 +1,17 @@
 import type { TeamMemberWithImage } from '../../constants/team';
-import { fonts, t } from '../../constants/theme';
 
 export function TeamCard({ member }: { member: TeamMemberWithImage }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div className="flex flex-col gap-3.5">
       <img
         src={member.imgSrc}
         alt={member.name}
         loading="lazy"
-        style={{
-          width: '100%',
-          aspectRatio: '1',
-          objectFit: 'cover',
-          borderRadius: 16,
-          background: t.altBg,
-        }}
+        className="aspect-square w-full rounded-2xl bg-alt object-cover"
       />
       <div>
-        <p style={{ margin: 0, fontFamily: fonts.display, fontWeight: 700, fontSize: 15 }}>
-          {member.name}
-        </p>
-        <p style={{ margin: '3px 0 0', fontSize: 13, color: t.textMuted }}>{member.title}</p>
+        <p className="m-0 font-display text-[15px] font-bold">{member.name}</p>
+        <p className="m-0 mt-0.75 text-[13px] text-ink-muted">{member.title}</p>
       </div>
     </div>
   );

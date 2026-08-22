@@ -3,7 +3,6 @@ import { Minus, Plus } from 'lucide-react';
 import { PageBanner } from '../components/ui/PageBanner';
 import { Section } from '../components/ui/Section';
 import { DEFAULT_OPEN_FAQ_KEY, groupedFaqs } from '../constants/faq';
-import { brand, fonts, t } from '../constants/theme';
 
 export function FaqScreen() {
   const [openKey, setOpenKey] = useState<string | null>(DEFAULT_OPEN_FAQ_KEY);
@@ -14,72 +13,30 @@ export function FaqScreen() {
 
       <Section background="page" padding="56px" maxWidth={760} style={{ paddingBottom: 96 }}>
         {groupedFaqs.map((group) => (
-          <div key={group.category} style={{ marginTop: 36 }}>
-            <p
-              style={{
-                margin: 0,
-                fontFamily: fonts.mono,
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: brand.blue,
-              }}
-            >
+          <div key={group.category} className="mt-9">
+            <p className="m-0 font-mono text-xs font-semibold tracking-[0.1em] text-blue uppercase">
               {group.category}
             </p>
-            <div
-              style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
-            >
+            <div className="mt-4 flex flex-col gap-2.5">
               {group.items.map((item) => {
                 const isOpen = openKey === item.key;
                 return (
-                  <div
-                    key={item.key}
-                    style={{
-                      border: `1px solid ${t.border}`,
-                      borderRadius: 14,
-                      overflow: 'hidden',
-                    }}
-                  >
+                  <div key={item.key} className="overflow-hidden rounded-[14px] border border-line">
                     <button
                       type="button"
                       onClick={() => setOpenKey(isOpen ? null : item.key)}
                       aria-expanded={isOpen}
-                      style={{
-                        width: '100%',
-                        textAlign: 'left',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        padding: '18px 20px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        gap: 12,
-                        fontFamily: fonts.display,
-                        fontWeight: 700,
-                        fontSize: 15,
-                        color: t.text,
-                      }}
+                      className="flex w-full items-center justify-between gap-3 border-0 bg-transparent px-5 py-[18px] text-left font-display text-[15px] font-bold text-ink"
                     >
                       {item.question}
                       {isOpen ? (
-                        <Minus size={16} style={{ flexShrink: 0, color: t.textMuted }} aria-hidden />
+                        <Minus size={16} className="shrink-0 text-ink-muted" aria-hidden />
                       ) : (
-                        <Plus size={16} style={{ flexShrink: 0, color: t.textMuted }} aria-hidden />
+                        <Plus size={16} className="shrink-0 text-ink-muted" aria-hidden />
                       )}
                     </button>
                     {isOpen ? (
-                      <p
-                        style={{
-                          margin: 0,
-                          padding: '0 20px 20px',
-                          fontSize: 14,
-                          lineHeight: 1.65,
-                          color: t.textMuted,
-                        }}
-                      >
+                      <p className="m-0 px-5 pb-5 text-sm leading-[1.65] text-ink-muted">
                         {item.answer}
                       </p>
                     ) : null}

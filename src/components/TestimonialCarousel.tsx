@@ -4,14 +4,7 @@ import {
   testimonialAvatarUrl,
   testimonials,
 } from '../constants/testimonials';
-import { brand, EASE, fonts, shadows, t } from '../constants/theme';
 
-/**
- * Three-phase transition copied from the mockup's `switchTestimonial`:
- *   exit  — current quote slides out and fades
- *   snap  — swap content, jump (untransitioned) to the far side
- *   enter — slide/fade the new quote into place
- */
 type Phase = 'enter' | 'exit' | 'snap';
 
 const EXIT_MS = 280;
@@ -69,50 +62,29 @@ export function TestimonialCarousel() {
   const quoteX =
     phase === 'exit' ? direction * -30 : phase === 'snap' ? direction * 30 : 0;
   const quoteTransition =
-    phase === 'snap' ? 'none' : `transform 0.32s ${EASE}, opacity 0.32s ease`;
+    phase === 'snap' ? 'none' : 'transform 0.32s var(--ease-out-expo), opacity 0.32s ease';
 
   const half = Math.floor(testimonials.length / 2);
 
   return (
-    <div
-      style={{
-        marginTop: 40,
-        background: t.cardBg,
-        borderRadius: 22,
-        padding: '48px 40px',
-        boxShadow: shadows.card,
-        minHeight: 313,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}
-    >
-      <div style={{ overflow: 'hidden' }}>
+    <div className="mt-10 flex min-h-[430px] flex-col justify-between rounded-[22px] bg-card px-10 py-12 shadow-card">
+      <div className="overflow-hidden">
         <div
           aria-live="polite"
+          className="min-h-[140px] flex flex-col items-center"
           style={{
             opacity: quoteOpacity,
             transform: `translateX(${quoteX}px)`,
             transition: quoteTransition,
-            minHeight: 140,
           }}
         >
-          <p style={{ margin: 0, fontSize: 20, lineHeight: 1.6 }}>&ldquo;{active.quote}&rdquo;</p>
-          <p
-            style={{
-              margin: '24px 0 0',
-              fontFamily: fonts.display,
-              fontWeight: 700,
-              fontSize: 15,
-            }}
-          >
-            {active.name}
-          </p>
-          <p style={{ margin: '3px 0 0', fontSize: 13, color: t.textMuted }}>{active.role}</p>
+          <p className="m-0 text-xl leading-[1.6] text-center">&ldquo;{active.quote}&rdquo;</p>
+          <p className="mt-6 font-display text-[15px] font-bold">{active.name}</p>
+          <p className="mt-[3px] text-[13px] text-ink-muted">{active.role}</p>
         </div>
       </div>
 
-      <div style={{ marginTop: 32, position: 'relative', width: '100%', height: 92 }}>
+      <div className="relative mt-8 h-[92px] w-full">
         {testimonials.map((testimonial, i) => {
           const n = testimonials.length;
           const diff = (((i - index + half + n) % n) - half);
@@ -128,33 +100,18 @@ export function TestimonialCarousel() {
               onClick={() => goTo(i)}
               aria-label={`Show testimonial from ${testimonial.name}`}
               aria-current={isActive}
+              className={`absolute top-1/2 left-1/2 cursor-pointer rounded-full border-[3px] bg-transparent p-[3px] transition-[transform_0.55s_var(--ease-out-expo),opacity_0.55s_var(--ease-out-expo),border-color_0.4s_ease] ${isActive ? 'border-gold' : 'border-transparent'}`}
               style={{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
                 zIndex: 10 - dist,
-                background: 'none',
-                cursor: 'pointer',
-                padding: 3,
-                borderRadius: 999,
-                border: `3px solid ${isActive ? brand.gold : 'transparent'}`,
                 transform: `translate(calc(-50% + ${diff * 74}px), -50%) scale(${scale})`,
                 opacity,
-                transition: `transform 0.55s ${EASE}, opacity 0.55s ${EASE}, border-color 0.4s ease`,
               }}
             >
               <img
                 src={testimonialAvatarUrl(testimonial)}
                 alt=""
                 loading="lazy"
-                style={{
-                  display: 'block',
-                  width: 52,
-                  height: 52,
-                  borderRadius: 999,
-                  objectFit: 'cover',
-                  background: t.altBg,
-                }}
+                className="block h-[52px] w-[52px] rounded-full bg-alt object-cover"
               />
             </button>
           );

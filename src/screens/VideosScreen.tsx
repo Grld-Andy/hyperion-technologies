@@ -8,10 +8,7 @@ export function VideosScreen() {
     <>
       <PageBanner eyebrow="Videos" title="Training Video Library" />
       <Section background="page" padding="56px" style={{ paddingBottom: 96 }}>
-        <div
-          className="hy-grid-3"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}
-        >
+        <div className="hy-grid-3 grid grid-cols-3 gap-5">
           {videos.map((video) => (
             <VideoCard key={video.title} video={video} />
           ))}

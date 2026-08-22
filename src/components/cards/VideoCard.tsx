@@ -1,6 +1,5 @@
 import { Clock, Play } from 'lucide-react';
 import { VIDEO_THUMBNAIL_URL, type TrainingVideo } from '../../constants/videos';
-import { brand, fonts, t } from '../../constants/theme';
 
 interface VideoCardProps {
   video: TrainingVideo;
@@ -12,81 +11,22 @@ export function VideoCard({ video, variant = 'library' }: VideoCardProps) {
   if (variant === 'feature') {
     return (
       <div
-        className="hy-lift"
+        className="hy-lift relative overflow-hidden rounded-2xl border border-white/8 p-5"
         style={{
-          position: 'relative',
-          overflow: 'hidden',
           background: `linear-gradient(oklch(0.24 0.09 265 / 0.75), oklch(0.24 0.09 265 / 0.9)), url('${VIDEO_THUMBNAIL_URL}') center/cover`,
-          border: '1px solid oklch(1 0 0 / 0.08)',
-          borderRadius: 16,
-          padding: 20,
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            right: -30,
-            bottom: -30,
-            width: 150,
-            height: 150,
-            borderRadius: 999,
-            background: 'radial-gradient(circle, oklch(0.79 0.135 84 / 0.25), transparent 70%)',
-          }}
-        />
-        <div
-          style={{
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: 46,
-            width: 46,
-            borderRadius: 999,
-            background: 'oklch(0.79 0.135 84 / 0.18)',
-            border: '1px solid oklch(0.79 0.135 84 / 0.5)',
-            backdropFilter: 'blur(8px)',
-            color: brand.goldLight,
-          }}
-        >
+        <div className="absolute -right-[30px] -bottom-[30px] h-[150px] w-[150px] rounded-full bg-[radial-gradient(circle,oklch(0.79_0.135_84/0.25),transparent_70%)]" />
+        <div className="relative flex h-[46px] w-[46px] items-center justify-center rounded-full border border-gold/50 bg-gold/18 text-gold-light backdrop-blur">
           <Play size={19} aria-hidden />
         </div>
-        <p
-          style={{
-            position: 'relative',
-            margin: '18px 0 0',
-            fontFamily: fonts.mono,
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: brand.gold,
-          }}
-        >
+        <p className="relative m-0 mt-4.5 font-mono text-[11px] font-semibold tracking-[0.08em] text-gold uppercase">
           {video.category}
         </p>
-        <p
-          style={{
-            position: 'relative',
-            margin: '8px 0 0',
-            fontFamily: fonts.display,
-            fontWeight: 700,
-            fontSize: 17,
-            color: '#fff',
-          }}
-        >
+        <p className="relative m-0 mt-2 font-display text-[17px] font-bold text-white">
           {video.title}
         </p>
-        <p
-          style={{
-            position: 'relative',
-            margin: '20px 0 0',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            fontSize: 12,
-            color: 'oklch(1 0 0 / 0.55)',
-          }}
-        >
+        <p className="relative m-0 mt-5 flex items-center gap-1.5 text-xs text-white/55">
           <Clock size={12} aria-hidden />
           {video.duration}
         </p>
@@ -95,75 +35,26 @@ export function VideoCard({ video, variant = 'library' }: VideoCardProps) {
   }
 
   return (
-    <div
-      className="hy-lift"
-      style={{
-        border: `1px solid ${t.border}`,
-        borderRadius: 16,
-        overflow: 'hidden',
-        background: t.cardBg,
-      }}
-    >
+    <div className="hy-lift overflow-hidden rounded-2xl border border-line bg-card">
       <div
+        className="relative flex aspect-video items-center justify-center"
         style={{
-          position: 'relative',
-          aspectRatio: '16 / 9',
           background: `linear-gradient(oklch(0.28 0.11 265 / 0.45), oklch(0.28 0.11 265 / 0.45)), url('${VIDEO_THUMBNAIL_URL}') center/cover`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
       >
-        <span
-          style={{
-            display: 'flex',
-            height: 48,
-            width: 48,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 999,
-            background: brand.goldLight,
-            color: brand.navyDeep,
-          }}
-        >
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold-light text-navy-deep">
           <Play size={20} aria-hidden />
         </span>
-        <span
-          style={{
-            position: 'absolute',
-            bottom: 8,
-            right: 8,
-            background: 'oklch(0 0 0 / 0.6)',
-            color: '#fff',
-            fontSize: 11,
-            padding: '2px 7px',
-            borderRadius: 5,
-            fontFamily: fonts.mono,
-          }}
-        >
+        <span className="absolute right-2 bottom-2 rounded-[5px] bg-black/60 px-[7px] py-0.5 font-mono text-[11px] text-white">
           {video.duration}
         </span>
       </div>
-      <div style={{ padding: 18 }}>
-        <span
-          style={{
-            fontFamily: fonts.mono,
-            fontSize: 10,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: brand.blue,
-          }}
-        >
+      <div className="p-4.5">
+        <span className="font-mono text-[10px] tracking-[0.08em] text-blue uppercase">
           {video.category}
         </span>
-        <h3
-          style={{ margin: '8px 0 0', fontFamily: fonts.display, fontWeight: 700, fontSize: 15 }}
-        >
-          {video.title}
-        </h3>
-        <p style={{ margin: '8px 0 0', fontSize: 13, color: t.textMuted, lineHeight: 1.5 }}>
-          {video.description}
-        </p>
+        <h3 className="m-0 mt-2 font-display text-[15px] font-bold">{video.title}</h3>
+        <p className="m-0 mt-2 text-[13px] leading-normal text-ink-muted">{video.description}</p>
       </div>
     </div>
   );

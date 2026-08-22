@@ -1,25 +1,15 @@
-import { useState, type CSSProperties, type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { PageBanner } from '../components/ui/PageBanner';
 import { Section } from '../components/ui/Section';
 import { certifications } from '../constants/certifications';
 import { site } from '../constants/site';
-import { brand, fonts, t } from '../constants/theme';
 
-const fieldStyle: CSSProperties = {
-  marginTop: 6,
-  width: '100%',
-  background: t.inputBg,
-  border: `1px solid ${t.border}`,
-  borderRadius: 9,
-  padding: '12px 14px',
-  fontSize: 14,
-  fontFamily: fonts.body,
-  color: t.text,
-};
+const fieldClass =
+  'mt-1.5 w-full rounded-[9px] border border-line bg-input px-3.5 py-3 font-body text-sm text-ink';
 
-const labelStyle: CSSProperties = { fontSize: 12, fontWeight: 600 };
+const labelClass = 'text-xs font-semibold';
 
 function ContactDetail({
   icon,
@@ -31,14 +21,12 @@ function ContactDetail({
   lines: string[];
 }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-      <span style={{ flexShrink: 0, marginTop: 2, color: brand.blue, display: 'flex' }}>
-        {icon}
-      </span>
+    <div className="flex items-start gap-2.5">
+      <span className="mt-0.5 flex shrink-0 text-blue">{icon}</span>
       <div>
-        <p style={{ margin: 0, fontWeight: 700 }}>{title}</p>
+        <p className="m-0 font-bold">{title}</p>
         {lines.map((line, i) => (
-          <p key={line} style={{ margin: i === 0 ? '4px 0 0' : '2px 0 0', color: t.textMuted }}>
+          <p key={line} className={`text-ink-muted ${i === 0 ? 'mt-1' : 'mt-0.5'}`}>
             {line}
           </p>
         ))}
@@ -66,23 +54,10 @@ export function ContactScreen() {
       />
 
       <Section background="page" maxWidth={1100}>
-        <div
-          className="hy-split"
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56 }}
-        >
+        <div className="hy-split grid grid-cols-[1fr_1.2fr] gap-14">
           <div>
-            <h3 style={{ margin: 0, fontFamily: fonts.display, fontWeight: 700, fontSize: 18 }}>
-              Contact Details
-            </h3>
-            <div
-              style={{
-                marginTop: 20,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 16,
-                fontSize: 14,
-              }}
-            >
+            <h3 className="m-0 font-display text-lg font-bold">Contact Details</h3>
+            <div className="mt-5 flex flex-col gap-4 text-sm">
               <ContactDetail
                 icon={<MapPin size={17} aria-hidden />}
                 title="Address"
@@ -105,31 +80,23 @@ export function ContactScreen() {
               />
             </div>
 
-            <div
-              style={{
-                marginTop: 24,
-                borderRadius: 16,
-                overflow: 'hidden',
-                aspectRatio: '4 / 3',
-                background: t.altBg,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <span style={{ fontSize: 13, color: t.textMuted, fontFamily: fonts.mono }}>
-                {site.contact.mapLabel}
-              </span>
+            <div className="mt-6 aspect-[4/3] overflow-hidden rounded-2xl border border-line">
+              <iframe
+                title={site.contact.mapLabel}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(site.contact.address)}&output=embed`}
+                width="100%"
+                height="100%"
+                className="block border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
 
-          <form
-            onSubmit={onSubmit}
-            style={{ background: t.altBg, borderRadius: 20, padding: 32 }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <form onSubmit={onSubmit} className="rounded-[20px] bg-alt p-8">
+            <div className="flex flex-col gap-4">
               <div>
-                <label htmlFor="contact-name" style={labelStyle}>
+                <label htmlFor="contact-name" className={labelClass}>
                   Full Name
                 </label>
                 <input
@@ -137,12 +104,12 @@ export function ContactScreen() {
                   name="name"
                   required
                   placeholder="Your name"
-                  style={fieldStyle}
+                  className={fieldClass}
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-email" style={labelStyle}>
+                <label htmlFor="contact-email" className={labelClass}>
                   Email
                 </label>
                 <input
@@ -151,15 +118,15 @@ export function ContactScreen() {
                   type="email"
                   required
                   placeholder="you@email.com"
-                  style={fieldStyle}
+                  className={fieldClass}
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-program" style={labelStyle}>
+                <label htmlFor="contact-program" className={labelClass}>
                   Program of Interest
                 </label>
-                <select id="contact-program" name="program" defaultValue="" style={fieldStyle}>
+                <select id="contact-program" name="program" defaultValue="" className={fieldClass}>
                   <option value="" disabled>
                     CCNA, CCNP, CompTIA A+...
                   </option>
@@ -174,7 +141,7 @@ export function ContactScreen() {
               </div>
 
               <div>
-                <label htmlFor="contact-message" style={labelStyle}>
+                <label htmlFor="contact-message" className={labelClass}>
                   Message
                 </label>
                 <textarea
@@ -182,7 +149,7 @@ export function ContactScreen() {
                   name="message"
                   rows={4}
                   placeholder="Tell us what you're looking for..."
-                  style={{ ...fieldStyle, resize: 'vertical', minHeight: 80 }}
+                  className={`${fieldClass} min-h-20 resize-y`}
                 />
               </div>
 
@@ -191,10 +158,7 @@ export function ContactScreen() {
               </Button>
 
               {submitted ? (
-                <p
-                  role="status"
-                  style={{ margin: 0, fontSize: 13, color: t.textMuted, lineHeight: 1.6 }}
-                >
+                <p role="status" className="m-0 text-[13px] leading-[1.6] text-ink-muted">
                   Thanks — your details are noted. For the fastest response, call or WhatsApp us on{' '}
                   {site.contact.phone}.
                 </p>

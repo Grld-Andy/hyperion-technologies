@@ -1,5 +1,4 @@
 import type { Service } from '../../constants/services';
-import { fonts, t } from '../../constants/theme';
 import { CheckList } from '../ui/CheckList';
 import { IconTile } from '../ui/IconTile';
 
@@ -14,39 +13,22 @@ export function ServiceCard({ service, variant = 'compact' }: ServiceCardProps) 
 
   return (
     <div
-      className="hy-card-lift-blue"
-      style={{
-        border: `1px solid ${t.border}`,
-        borderRadius: 16,
-        padding: detailed ? 28 : 26,
-        background: t.cardBg,
-      }}
+      className={`hy-card-lift-blue rounded-2xl border border-line bg-card ${detailed ? 'p-7' : 'p-6.5'}`}
     >
       {detailed ? (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div className="flex items-center gap-3.5">
           <IconTile icon={service.icon} />
-          <h3 style={{ margin: 0, fontFamily: fonts.display, fontWeight: 700, fontSize: 17 }}>
-            {service.name}
-          </h3>
+          <h3 className="m-0 font-display text-[17px] font-bold">{service.name}</h3>
         </div>
       ) : (
         <>
           <IconTile icon={service.icon} />
-          <h3
-            style={{ margin: '18px 0 0', fontFamily: fonts.display, fontWeight: 700, fontSize: 16 }}
-          >
-            {service.name}
-          </h3>
+          <h3 className="m-0 mt-4.5 font-display text-base font-bold">{service.name}</h3>
         </>
       )}
 
       <p
-        style={{
-          margin: detailed ? '16px 0 0' : '8px 0 0',
-          fontSize: 14,
-          lineHeight: detailed ? 1.6 : 1.55,
-          color: t.textMuted,
-        }}
+        className={`m-0 text-sm text-ink-muted ${detailed ? 'mt-4 leading-[1.6]' : 'mt-2 leading-[1.55]'}`}
       >
         {detailed ? service.description : service.summary}
       </p>

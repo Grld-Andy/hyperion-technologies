@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { NavItem } from '../../constants/navigation';
-import { fonts, shadows, t } from '../../constants/theme';
 
 interface NavDropdownProps {
   item: NavItem;
@@ -39,27 +38,11 @@ export function NavDropdown({
     return () => document.removeEventListener('keydown', onKey);
   }, [isOpen, onScheduleClose]);
 
-  const triggerStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 4,
-    background: isOpen ? t.altBg : 'transparent',
-    border: 'none',
-    borderRadius: 8,
-    cursor: 'pointer',
-    padding: '10px 12px',
-    fontFamily: fonts.mono,
-    fontSize: 11,
-    fontWeight: 600,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    color: isActive ? 'var(--blue)' : t.text,
-    transition: 'background 0.15s ease, color 0.15s ease',
-  } as const;
+  const triggerClassName = `flex items-center gap-1 rounded-lg border-none px-3 py-2.5 font-mono text-[11px] font-semibold tracking-[0.06em] uppercase cursor-pointer transition-colors duration-150 ${isOpen ? 'bg-alt' : 'bg-transparent'} ${isActive ? 'text-blue' : 'text-ink'}`;
 
   if (!item.children) {
     return (
-      <Link to={item.to ?? '/'} style={triggerStyle} onClick={onNavigate}>
+      <Link to={item.to ?? '/'} className={triggerClassName} onClick={onNavigate}>
         {item.label}
       </Link>
     );
@@ -68,7 +51,7 @@ export function NavDropdown({
   return (
     <div
       ref={containerRef}
-      style={{ position: 'relative' }}
+      className="relative"
       onMouseEnter={() => onOpen(item.key)}
       onMouseLeave={onScheduleClose}
     >
@@ -77,7 +60,7 @@ export function NavDropdown({
         onClick={() => onToggle(item.key)}
         aria-expanded={isOpen}
         aria-haspopup="menu"
-        style={triggerStyle}
+        className={triggerClassName}
       >
         {item.label}
         <ChevronDown size={12} aria-hidden />
@@ -86,37 +69,15 @@ export function NavDropdown({
       {isOpen ? (
         <div
           role="menu"
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            minWidth: 190,
-            background: t.cardBg,
-            border: `1px solid ${t.border}`,
-            borderRadius: 12,
-            boxShadow: shadows.dropdown,
-            padding: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-          }}
+          className="absolute top-full left-0 flex min-w-[190px] flex-col gap-0.5 rounded-xl border border-line bg-card p-2 shadow-lift"
         >
           {item.children.map((child) => (
             <Link
               key={child.to}
               to={child.to}
               role="menuitem"
-              className="hy-dropdown-item"
+              className="hy-dropdown-item rounded-lg px-3 py-[9px] text-left font-body text-[13px] font-medium text-ink"
               onClick={onNavigate}
-              style={{
-                textAlign: 'left',
-                padding: '9px 12px',
-                borderRadius: 8,
-                fontFamily: fonts.body,
-                fontSize: 13,
-                fontWeight: 500,
-                color: t.text,
-              }}
             >
               {child.label}
             </Link>

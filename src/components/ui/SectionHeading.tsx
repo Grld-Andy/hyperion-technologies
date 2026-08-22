@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { brand, fonts, t } from '../../constants/theme';
 
 interface SectionHeadingProps {
   eyebrow: string;
@@ -23,42 +22,19 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div style={style}>
-      <p
-        style={{
-          margin: 0,
-          fontFamily: fonts.mono,
-          fontSize: 12,
-          fontWeight: 600,
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          color: brand.blue,
-        }}
-      >
+      <p className="m-0 font-mono text-[12px] font-semibold tracking-[0.12em] text-blue uppercase">
         {eyebrow}
       </p>
       <Tag
-        className="hy-h2"
-        style={{
-          margin: '12px 0 0',
-          fontFamily: fonts.display,
-          fontWeight: 800,
-          fontSize: size,
-          letterSpacing: '-0.01em',
-          lineHeight: 1.2,
-          maxWidth,
-        }}
+        className="hy-h2 mx-0 mt-3 mb-0 font-display font-extrabold tracking-[-0.01em] leading-[1.2]"
+        style={{ fontSize: size, maxWidth }}
       >
         {title}
       </Tag>
       {description ? (
         <p
-          style={{
-            margin: '14px 0 0',
-            fontSize: 15,
-            lineHeight: 1.7,
-            color: t.textMuted,
-            maxWidth: maxWidth ?? 680,
-          }}
+          className="mx-0 mt-3.5 mb-0 text-[15px] leading-[1.7] text-ink-muted"
+          style={{ maxWidth: maxWidth ?? 680 }}
         >
           {description}
         </p>

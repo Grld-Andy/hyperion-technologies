@@ -1,12 +1,12 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { layout, t } from '../../constants/theme';
+import { layout } from '../../constants/theme';
 
 export type SectionBackground = 'page' | 'alt' | 'navy';
 
-const backgrounds: Record<SectionBackground, string> = {
-  page: t.pageBg,
-  alt: t.altBg,
-  navy: 'var(--navy)',
+const backgroundClass: Record<SectionBackground, string> = {
+  page: 'bg-page',
+  alt: 'bg-alt',
+  navy: 'bg-navy',
 };
 
 interface SectionProps {
@@ -34,14 +34,12 @@ export function Section({
   return (
     <section
       id={id}
-      style={{
-        background: backgrounds[background],
-        padding: `${padding} ${layout.gutter}px`,
-        textAlign: align,
-        ...style,
-      }}
+      className={`px-8 ${backgroundClass[background]} ${align === 'center' ? 'text-center' : 'text-left'}`}
+      style={{ paddingTop: padding, paddingBottom: padding, ...style }}
     >
-      <div style={{ maxWidth, margin: '0 auto', ...innerStyle }}>{children}</div>
+      <div className="mx-auto" style={{ maxWidth, ...innerStyle }}>
+        {children}
+      </div>
     </section>
   );
 }

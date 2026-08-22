@@ -22,6 +22,22 @@ export const galleryFilters: Array<'All' | GalleryCategory> = [
   'Events',
 ];
 
+/** One representative stock photo per category, reused across that category's tiles. */
+export const galleryCategoryImages: Record<GalleryCategory, string> = {
+  'Cisco Training':
+    'https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&q=80&auto=format&fit=crop',
+  'CompTIA Training':
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop',
+  'Networking Labs':
+    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop',
+  Graduation:
+    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80&auto=format&fit=crop',
+  'Practical Sessions':
+    'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop',
+  Events:
+    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&auto=format&fit=crop',
+};
+
 export const gallery: GalleryItem[] = [
   { id: 'g1', category: 'Networking Labs', title: 'Structured cabling lab session' },
   { id: 'g2', category: 'Cisco Training', title: 'Students configuring Cisco routers' },

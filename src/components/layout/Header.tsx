@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/hyperion-logo.jpg';
 import { navItems, routes } from '../../constants/navigation';
 import { site } from '../../constants/site';
-import { fonts, layout, t } from '../../constants/theme';
 import { useTheme } from '../../hooks/useTheme';
 import { Button } from '../ui/Button';
 import { NavDropdown } from './NavDropdown';
@@ -48,75 +47,21 @@ export function Header() {
   };
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        background: t.headerBg,
-        borderBottom: `1px solid ${t.border}`,
-        transition: 'background 0.3s ease, border-color 0.3s ease',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: layout.maxWidth,
-          margin: '0 auto',
-          padding: `0 ${layout.gutter}px`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: 76,
-          gap: 16,
-        }}
-      >
-        <Link
-          to={routes.home}
-          style={{ display: 'flex', alignItems: 'center', gap: 10, color: t.text }}
-        >
-          <img
-            src={logo}
-            alt={site.name}
-            style={{ height: 42, width: 42, objectFit: 'contain', borderRadius: 8 }}
-          />
-          <span
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              lineHeight: 1.15,
-            }}
-          >
-            <span
-              style={{
-                fontFamily: fonts.display,
-                fontWeight: 800,
-                fontSize: 16,
-                letterSpacing: '-0.01em',
-                color: t.text,
-              }}
-            >
+    <header className="sticky top-0 z-50 border-b border-line bg-header transition-colors duration-300">
+      <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between gap-4 px-8">
+        <Link to={routes.home} className="flex items-center gap-2.5 text-ink">
+          <img src={logo} alt={site.name} className="h-[42px] w-[42px] rounded-lg object-contain" />
+          <span className="flex flex-col items-start leading-[1.15]">
+            <span className="font-display text-base font-extrabold tracking-[-0.01em] text-ink">
               {site.wordmark}
             </span>
-            <span
-              style={{
-                fontFamily: fonts.mono,
-                fontWeight: 500,
-                fontSize: 9,
-                letterSpacing: '0.16em',
-                color: t.textMuted,
-              }}
-            >
+            <span className="font-mono text-[9px] font-medium tracking-[0.16em] text-ink-muted">
               {site.wordmarkSub}
             </span>
           </span>
         </Link>
 
-        <nav
-          className="hy-nav-links"
-          style={{ display: 'flex', alignItems: 'center', gap: 4 }}
-          aria-label="Primary"
-        >
+        <nav className="hy-nav-links flex items-center gap-1" aria-label="Primary">
           {navItems.map((item) => (
             <NavDropdown
               key={item.key}
@@ -131,50 +76,28 @@ export function Header() {
           ))}
         </nav>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div className="flex items-center gap-2.5">
           <button
             type="button"
             onClick={toggle}
             aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: 38,
-              width: 38,
-              flexShrink: 0,
-              borderRadius: 999,
-              border: `1px solid ${t.border}`,
-              background: 'none',
-              color: t.text,
-              cursor: 'pointer',
-            }}
+            className="flex h-9.5 w-9.5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line bg-transparent text-ink"
           >
             {mode === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
-          <Button to={routes.contact} variant="blue" style={{ padding: '11px 20px', fontSize: 13, fontWeight: 600 }}>
-            Talk to an Advisor
-          </Button>
+          <div className="hy-navbar-cta">
+            <Button to={routes.contact} variant="blue" style={{ padding: '11px 20px', fontSize: 13, fontWeight: 600 }}>
+              Talk to an Advisor
+            </Button>
+          </div>
 
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
-            className="hy-mobile-toggle"
-            style={{
-              display: 'none',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: 38,
-              width: 38,
-              borderRadius: 999,
-              border: `1px solid ${t.border}`,
-              background: 'none',
-              color: t.text,
-              cursor: 'pointer',
-            }}
+            className="hy-mobile-toggle hidden h-9.5 w-9.5 cursor-pointer items-center justify-center rounded-full border border-line bg-transparent text-ink"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -182,60 +105,32 @@ export function Header() {
       </div>
 
       {mobileOpen ? (
-        <div
-          className="hy-mobile-menu"
-          style={{
-            borderTop: `1px solid ${t.border}`,
-            background: t.headerBg,
-            padding: `12px ${layout.gutter}px 20px`,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 4,
-          }}
-        >
+        <div className="hy-mobile-menu flex flex-col gap-1 border-t border-line bg-header px-8 pt-3 pb-5">
           {navItems.map((item) => (
-            <div key={item.key} style={{ display: 'flex', flexDirection: 'column' }}>
+            <div key={item.key} className="flex flex-col">
               {item.to ? (
                 <Link
                   to={item.to}
-                  style={{
-                    padding: '10px 0',
-                    fontFamily: fonts.mono,
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    color: t.text,
-                  }}
+                  className="py-2.5 font-mono text-[11px] font-semibold tracking-[0.06em] text-ink uppercase"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span
-                  style={{
-                    padding: '10px 0 4px',
-                    fontFamily: fonts.mono,
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    color: t.textMuted,
-                  }}
-                >
+                <span className="pt-2.5 pb-1 font-mono text-[11px] font-semibold tracking-[0.06em] text-ink-muted uppercase">
                   {item.label}
                 </span>
               )}
               {item.children?.map((child) => (
-                <Link
-                  key={child.to}
-                  to={child.to}
-                  style={{ padding: '8px 0 8px 12px', fontSize: 14, color: t.text }}
-                >
+                <Link key={child.to} to={child.to} className="py-2 pl-3 text-sm text-ink">
                   {child.label}
                 </Link>
               ))}
             </div>
           ))}
+
+          <Button to={routes.contact} variant="blue" fullWidth style={{ marginTop: 8 }}>
+            Talk to an Advisor
+          </Button>
         </div>
       ) : null}
     </header>

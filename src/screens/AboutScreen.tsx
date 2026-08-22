@@ -7,7 +7,6 @@ import { Section } from '../components/ui/Section';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { routes } from '../constants/navigation';
 import { site } from '../constants/site';
-import { fonts, t } from '../constants/theme';
 import { values } from '../constants/values';
 
 export function AboutScreen() {
@@ -16,57 +15,25 @@ export function AboutScreen() {
       <PageBanner eyebrow="About Us" title={site.name} description={site.description} />
 
       <Section background="page">
-        <div
-          className="hy-split"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 56,
-            alignItems: 'center',
-          }}
-        >
+        <div className="hy-split grid grid-cols-2 items-center gap-14">
           <img
             src={aboutStory}
             alt="Hyperion Technologies training facility"
-            style={{
-              width: '100%',
-              aspectRatio: '16 / 10',
-              objectFit: 'cover',
-              borderRadius: 20,
-              alignSelf: 'start',
-            }}
+            className="aspect-[16/10] w-full self-start rounded-[20px] object-cover"
           />
           <div>
-            <p
-              style={{
-                margin: 0,
-                fontFamily: fonts.mono,
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--blue)',
-              }}
-            >
+            <p className="m-0 font-mono text-xs font-semibold tracking-[0.1em] text-blue uppercase">
               Our Story
             </p>
-            <h2
-              className="hy-h2"
-              style={{
-                margin: '12px 0 0',
-                fontFamily: fonts.display,
-                fontWeight: 800,
-                fontSize: 28,
-              }}
-            >
+            <h2 className="hy-h2 mt-3 font-display text-[28px] font-extrabold">
               Built to bridge classroom theory and IT careers
             </h2>
-            <p style={{ margin: '20px 0 0', color: t.textMuted, lineHeight: 1.7, fontSize: 15 }}>
+            <p className="mt-5 text-[15px] leading-[1.7] text-ink-muted">
               Hyperion Technologies was founded to close a real gap: talented students and
               professionals who understood IT concepts on paper but lacked the hands-on,
               certification-aligned training to translate that knowledge into a career.
             </p>
-            <p style={{ margin: '14px 0 0', color: t.textMuted, lineHeight: 1.7, fontSize: 15 }}>
+            <p className="mt-3.5 text-[15px] leading-[1.7] text-ink-muted">
               Today, we combine professional Cisco and CompTIA certification training with a full
               suite of IT services, giving students a practical, real-world environment to learn in,
               and giving businesses a dependable local technology partner.
@@ -84,15 +51,7 @@ export function AboutScreen() {
           title="Mission, vision, and values"
           size={30}
         />
-        <div
-          className="hy-grid-3"
-          style={{
-            marginTop: 44,
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 20,
-          }}
-        >
+        <div className="hy-grid-3 mt-11 grid grid-cols-3 gap-5">
           {values.map((value) => (
             <ValueCard key={value.title} value={value} />
           ))}

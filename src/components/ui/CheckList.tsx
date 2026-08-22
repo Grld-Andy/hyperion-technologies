@@ -1,5 +1,4 @@
 import { Check } from 'lucide-react';
-import { brand, fonts, t } from '../../constants/theme';
 
 interface CheckListProps {
   items: string[];
@@ -12,45 +11,17 @@ interface CheckListProps {
 export function CheckList({ items, heading, fontSize = 14, muted = true }: CheckListProps) {
   return (
     <div>
-      {heading ? (
-        <h3
-          style={{
-            margin: 0,
-            fontFamily: fonts.display,
-            fontWeight: 700,
-            fontSize: 16,
-          }}
-        >
-          {heading}
-        </h3>
-      ) : null}
+      {heading ? <h3 className="m-0 font-display text-[16px] font-bold">{heading}</h3> : null}
       <ul
-        style={{
-          margin: heading ? '14px 0 0' : '16px 0 0',
-          padding: 0,
-          listStyle: 'none',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 8,
-        }}
+        className={`mx-0 mb-0 ${heading ? 'mt-3.5' : 'mt-4'} flex list-none flex-col gap-2 p-0`}
       >
         {items.map((item) => (
           <li
             key={item}
-            style={{
-              display: 'flex',
-              gap: 8,
-              fontSize,
-              lineHeight: 1.55,
-              color: muted ? t.textMuted : t.text,
-            }}
+            className={`flex gap-2 leading-[1.55] ${muted ? 'text-ink-muted' : 'text-ink'}`}
+            style={{ fontSize }}
           >
-            <Check
-              size={14}
-              color={brand.goldDim}
-              style={{ flexShrink: 0, marginTop: 3 }}
-              aria-hidden
-            />
+            <Check size={14} className="mt-[3px] shrink-0 text-gold-dim" aria-hidden />
             {item}
           </li>
         ))}

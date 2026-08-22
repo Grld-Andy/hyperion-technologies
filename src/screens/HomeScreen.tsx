@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { BlogCard } from '../components/cards/BlogCard';
 import { CertCard } from '../components/cards/CertCard';
@@ -15,129 +16,44 @@ import { certifications } from '../constants/certifications';
 import { routes } from '../constants/navigation';
 import { featuredServices } from '../constants/services';
 import { heroHighlight, site } from '../constants/site';
-import { brand, EASE, fonts, layout } from '../constants/theme';
 import { whyChooseUs } from '../constants/values';
 import { featuredVideos } from '../constants/videos';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
+const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as const;
+
 function Hero() {
   const { revealed } = useScrollReveal({ immediate: true });
-  const enter = (delay: number) => ({
-    opacity: revealed ? 1 : 0,
-    transform: `translateY(${revealed ? 0 : 24}px)`,
-    transition: `opacity 0.8s ${EASE} ${delay}s, transform 0.8s ${EASE} ${delay}s`,
-  });
 
   return (
-    <section
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        background: brand.navy,
-        padding: `96px ${layout.gutter}px 72px`,
-      }}
-    >
-      <div
-        className="hy-drift-a"
-        style={{
-          position: 'absolute',
-          top: -80,
-          left: -60,
-          width: 340,
-          height: 340,
-          borderRadius: 999,
-          background: 'radial-gradient(circle, oklch(0.5 0.2 264 / 0.55), transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        className="hy-drift-b"
-        style={{
-          position: 'absolute',
-          bottom: -100,
-          right: -40,
-          width: 380,
-          height: 380,
-          borderRadius: 999,
-          background: 'radial-gradient(circle, oklch(0.79 0.135 84 / 0.35), transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        className="hy-pulse"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'radial-gradient(oklch(1 0 0 / 0.12) 1px, transparent 1px)',
-          backgroundSize: '34px 34px',
-          pointerEvents: 'none',
-        }}
-      />
+    <section className="relative overflow-hidden bg-navy px-8 pt-24 pb-[72px]">
+      <div className="hy-aurora-a pointer-events-none absolute top-[-80px] left-[-60px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.5_0.2_264/0.55),transparent_70%)]" />
+      <div className="hy-aurora-b pointer-events-none absolute right-[-40px] bottom-[-100px] h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,oklch(0.79_0.135_84/0.35),transparent_70%)]" />
+      <div className="hy-aurora-c pointer-events-none absolute top-[10%] left-[32%] h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,oklch(0.65_0.16_200/0.28),transparent_70%)]" />
+      <div className="hy-pulse pointer-events-none absolute inset-0 bg-[radial-gradient(oklch(1_0_0/0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent,var(--navy)_85%)]" />
 
-      <div
-        className="hy-split"
-        style={{
-          maxWidth: layout.maxWidth,
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1.1fr 0.9fr',
-          gap: 64,
-          alignItems: 'center',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <div style={enter(0)}>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              border: '1px solid oklch(1 0 0 / 0.15)',
-              borderRadius: 999,
-              padding: '7px 16px',
-              fontFamily: fonts.mono,
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: brand.goldLight,
-            }}
-          >
+      <div className="hy-split relative z-[1] mx-auto grid max-w-[1280px] grid-cols-[1.1fr_0.9fr] items-center gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={revealed ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-[7px] font-mono text-[11px] font-semibold tracking-[0.1em] text-gold-light uppercase">
             <ShieldCheck size={14} aria-hidden />
             {site.tagline}
           </span>
 
-          <h1
-            className="hy-h1"
-            style={{
-              margin: '28px 0 0',
-              fontFamily: fonts.display,
-              fontWeight: 800,
-              fontSize: 52,
-              lineHeight: 1.08,
-              letterSpacing: '-0.02em',
-              color: '#ffffff',
-              maxWidth: 640,
-            }}
-          >
+          <h1 className="hy-h1 mt-7 max-w-[640px] font-display text-[52px] leading-[1.08] font-extrabold tracking-[-0.02em] text-white">
             Certified networks start with{' '}
-            <span style={{ color: brand.goldLight }}>certified people.</span>
+            <span className="text-gold-light">certified people.</span>
           </h1>
 
-          <p
-            style={{
-              margin: '24px 0 0',
-              maxWidth: 560,
-              fontSize: 18,
-              lineHeight: 1.65,
-              color: 'oklch(1 0 0 / 0.75)',
-            }}
-          >
+          <p className="mt-6 max-w-[560px] text-lg leading-[1.65] text-white/75">
             {site.heroDescription}
           </p>
 
-          <div style={{ marginTop: 36, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <div className="mt-9 flex flex-wrap gap-3.5">
             <Button to={routes.certifications} variant="gold" size="lg">
               Explore Certifications <ArrowRight size={17} aria-hidden />
             </Button>
@@ -145,72 +61,31 @@ function Hero() {
               Talk to an Advisor
             </Button>
           </div>
-        </div>
+        </motion.div>
 
-        <div
-          style={{
-            background: 'oklch(1 0 0 / 0.06)',
-            border: '1px solid oklch(1 0 0 / 0.14)',
-            borderRadius: 22,
-            padding: 32,
-            ...enter(0.1),
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={revealed ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+          className="rounded-[22px] border border-white/14 bg-white/6 p-8"
         >
-          <p
-            style={{
-              margin: 0,
-              fontFamily: fonts.mono,
-              fontSize: 11,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: brand.goldLight,
-            }}
-          >
+          <p className="font-mono text-[11px] tracking-[0.12em] text-gold-light uppercase">
             {heroHighlight.eyebrow}
           </p>
-          <p
-            style={{
-              margin: '10px 0 0',
-              fontFamily: fonts.display,
-              fontWeight: 700,
-              fontSize: 26,
-              color: '#fff',
-            }}
-          >
+          <p className="mt-2.5 font-display text-[26px] font-bold text-white">
             {heroHighlight.title}
           </p>
-          <p
-            style={{
-              margin: '12px 0 0',
-              fontSize: 14,
-              lineHeight: 1.6,
-              color: 'oklch(1 0 0 / 0.65)',
-            }}
-          >
-            {heroHighlight.description}
-          </p>
-          <div style={{ margin: '24px 0', height: 1, background: 'oklch(0.88 0.09 88 / 0.5)' }} />
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <p className="mt-3 text-sm leading-[1.6] text-white/65">{heroHighlight.description}</p>
+          <div className="my-6 h-px bg-gold-light/50" />
+          <div className="grid grid-cols-2 gap-4">
             {heroHighlight.facts.map((fact) => (
               <div key={fact.label}>
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: fonts.mono,
-                    fontWeight: 600,
-                    fontSize: 17,
-                    color: '#fff',
-                  }}
-                >
-                  {fact.value}
-                </p>
-                <p style={{ margin: '4px 0 0', fontSize: 12, color: 'oklch(1 0 0 / 0.55)' }}>
-                  {fact.label}
-                </p>
+                <p className="font-mono text-[17px] font-semibold text-white">{fact.value}</p>
+                <p className="mt-1 text-xs text-white/55">{fact.label}</p>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -229,14 +104,7 @@ export function HomeScreen() {
             title="Training built on real teaching experience, not a script"
             maxWidth={620}
           />
-          <div
-            style={{
-              marginTop: 48,
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-              gap: 20,
-            }}
-          >
+          <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5">
             {whyChooseUs.map((item) => (
               <FeatureCard key={item.title} item={item} />
             ))}
@@ -250,18 +118,7 @@ export function HomeScreen() {
             eyebrow="Certification Tracks"
             title="Five certifications. One clear path forward."
           />
-          <div
-            className="hy-hide-scrollbar"
-            style={{
-              marginTop: 48,
-              display: 'flex',
-              gap: 16,
-              overflowX: 'auto',
-              paddingTop: 16,
-              paddingBottom: 16,
-              scrollSnapType: 'x proximity',
-            }}
-          >
+          <div className="hy-hide-scrollbar mt-12 flex gap-4 overflow-x-auto py-4 [scroll-snap-type:x_proximity]">
             {certifications.map((cert) => (
               <CertCard key={cert.slug} cert={cert} variant="carousel" />
             ))}
@@ -271,26 +128,13 @@ export function HomeScreen() {
 
       <Section background="page" align="center">
         <Reveal>
-          <SectionHeading
-            eyebrow="Watch & Learn"
-            title="Training videos"
-            style={{ textAlign: 'center' }}
-          />
-          <div
-            className="hy-grid-3"
-            style={{
-              marginTop: 48,
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 20,
-              textAlign: 'left',
-            }}
-          >
+          <SectionHeading eyebrow="Watch & Learn" title="Training videos" style={{ textAlign: 'center' }} />
+          <div className="hy-grid-3 mt-12 grid grid-cols-3 gap-5 text-left">
             {featuredVideos.map((video) => (
               <VideoCard key={video.title} video={video} variant="feature" />
             ))}
           </div>
-          <div style={{ marginTop: 40 }}>
+          <div className="mt-10">
             <Button to={routes.videos} variant="gold">
               View All Videos <ArrowRight size={15} aria-hidden />
             </Button>
@@ -301,20 +145,12 @@ export function HomeScreen() {
       <Section background="page">
         <Reveal>
           <SectionHeading eyebrow="What We Do" title="Full-spectrum IT services" />
-          <div
-            className="hy-grid-3"
-            style={{
-              marginTop: 48,
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 20,
-            }}
-          >
+          <div className="hy-grid-3 mt-12 grid grid-cols-3 gap-5">
             {featuredServices.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
           </div>
-          <div style={{ marginTop: 40, textAlign: 'center' }}>
+          <div className="mt-10 text-center">
             <Button to={routes.services} variant="outlineBlue" size="sm">
               View All Services
             </Button>
@@ -324,12 +160,8 @@ export function HomeScreen() {
 
       <Section background="alt" align="center" maxWidth={720}>
         <Reveal>
-          <SectionHeading
-            eyebrow="Student Voices"
-            title="What students say"
-            style={{ textAlign: 'center' }}
-          />
-          <div style={{ textAlign: 'left' }}>
+          <SectionHeading eyebrow="Student Voices" title="What students say" style={{ textAlign: 'center' }} />
+          <div className="text-left">
             <TestimonialCarousel />
           </div>
         </Reveal>
@@ -338,15 +170,7 @@ export function HomeScreen() {
       <Section background="page">
         <Reveal>
           <SectionHeading eyebrow="Latest News" title="From the Hyperion blog" />
-          <div
-            className="hy-grid-3"
-            style={{
-              marginTop: 40,
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 20,
-            }}
-          >
+          <div className="hy-grid-3 mt-10 grid grid-cols-3 gap-5">
             {blogPosts.map((post) => (
               <BlogCard key={post.title} post={post} />
             ))}
@@ -356,19 +180,10 @@ export function HomeScreen() {
 
       <Section background="navy" padding="80px" align="center">
         <Reveal>
-          <h2
-            className="hy-h2"
-            style={{
-              margin: 0,
-              fontFamily: fonts.display,
-              fontWeight: 800,
-              fontSize: 30,
-              color: '#fff',
-            }}
-          >
+          <h2 className="hy-h2 m-0 font-display text-[30px] font-extrabold text-white">
             Ready to get certified?
           </h2>
-          <p style={{ margin: '14px 0 0', color: 'oklch(1 0 0 / 0.7)', fontSize: 15 }}>
+          <p className="mt-3.5 text-[15px] text-white/70">
             Talk to an advisor about the right track for you.
           </p>
           <Button to={routes.contact} variant="gold" size="lg" style={{ marginTop: 26 }}>

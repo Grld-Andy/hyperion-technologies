@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { fonts, t } from '../../constants/theme';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { WhatsAppButton } from './WhatsAppButton';
@@ -16,20 +15,10 @@ function ScrollToTop() {
 
 export function Layout() {
   return (
-    <div
-      style={{
-        fontFamily: fonts.body,
-        color: t.text,
-        background: t.pageBg,
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'background 0.3s ease, color 0.3s ease',
-      }}
-    >
+    <div className="flex min-h-screen flex-col bg-page font-body text-ink transition-colors duration-300">
       <ScrollToTop />
       <Header />
-      <main style={{ flex: 1 }}>
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />

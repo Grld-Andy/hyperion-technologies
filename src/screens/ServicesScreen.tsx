@@ -12,10 +12,7 @@ export function ServicesScreen() {
         description="Certification training is our specialty, but our team supports the everyday technology needs of individuals, businesses, and schools."
       />
       <Section background="page">
-        <div
-          className="hy-grid-2"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}
-        >
+        <div className="hy-grid-2 grid grid-cols-2 gap-5">
           {services.map((service) => (
             <ServiceCard key={service.slug} service={service} variant="detailed" />
           ))}

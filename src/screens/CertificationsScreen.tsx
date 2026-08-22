@@ -26,7 +26,7 @@ export function CertificationsScreen({ group = 'all' }: { group?: CertGroup }) {
         description={copy.description}
       />
       <Section background="page">
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
+        <div className="flex flex-wrap gap-5">
           {visible.map((cert) => (
             <CertCard key={cert.slug} cert={cert} />
           ))}

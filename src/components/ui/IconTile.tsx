@@ -1,4 +1,3 @@
-import { brand } from '../../constants/theme';
 import { iconMap, type IconName } from '../../constants/icons';
 
 interface IconTileProps {
@@ -12,17 +11,8 @@ export function IconTile({ icon, size = 44, iconSize = 21 }: IconTileProps) {
   const Icon = iconMap[icon];
   return (
     <span
-      style={{
-        display: 'flex',
-        height: size,
-        width: size,
-        flexShrink: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 10,
-        background: brand.navy,
-        color: brand.goldLight,
-      }}
+      className="flex shrink-0 items-center justify-center rounded-[10px] bg-navy text-gold-light"
+      style={{ height: size, width: size }}
     >
       <Icon size={iconSize} aria-hidden />
     </span>

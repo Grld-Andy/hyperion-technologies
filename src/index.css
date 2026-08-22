@@ -1,8 +1,39 @@
-/* ---------------------------------------------------------------------------
-   Hyperion Technologies — global styles.
-   Surface tokens are written onto :root at runtime by ThemeProvider; the
-   defaults below match the light palette so first paint is never unstyled.
-   --------------------------------------------------------------------------- */
+@import 'tailwindcss';
+
+/* Tailwind color utilities resolve to CSS vars ThemeProvider rewrites on :root, so they stay theme-reactive without a `dark:` variant. */
+@theme {
+  --color-page: var(--page-bg);
+  --color-alt: var(--alt-bg);
+  --color-card: var(--card-bg);
+  --color-header: var(--header-bg);
+  --color-ink: var(--text);
+  --color-ink-muted: var(--text-muted);
+  --color-line: var(--border);
+  --color-input: var(--input-bg);
+
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dim: var(--gold-dim);
+  --color-blue: var(--blue);
+  --color-blue-bright: var(--blue-bright);
+  --color-blue-dark: var(--blue-dark);
+
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-lift: 0 18px 40px -18px oklch(0.28 0.11 265 / 0.35);
+  --shadow-lift-soft: 0 18px 40px -18px oklch(0.28 0.11 265 / 0.2);
+  --shadow-card:
+    0 1px 2px oklch(0.28 0.11 265 / 0.06), 0 24px 60px -24px oklch(0.28 0.11 265 / 0.25);
+  --shadow-card-soft:
+    0 1px 2px oklch(0.28 0.11 265 / 0.06), 0 8px 24px -12px oklch(0.28 0.11 265 / 0.18);
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 :root {
   --page-bg: #ffffff;
@@ -50,13 +81,15 @@ body {
     color 0.3s ease;
 }
 
-a {
-  color: var(--blue);
-  text-decoration: none;
-}
+@layer base {
+  a {
+    color: var(--blue);
+    text-decoration: none;
+  }
 
-a:hover {
-  color: var(--gold);
+  a:hover {
+    color: var(--gold);
+  }
 }
 
 ::selection {
@@ -67,8 +100,6 @@ a:hover {
 button {
   font-family: inherit;
 }
-
-/* --- Mockup keyframes ---------------------------------------------------- */
 
 @keyframes hyperionDriftA {
   0%,
@@ -110,7 +141,87 @@ button {
   animation: hyperionPulse 6s ease-in-out infinite;
 }
 
-/* --- Hover behaviours ---------------------------------------------------- */
+/* Mismatched non-integer durations + negative delays keep these three out of sync indefinitely. */
+@keyframes hyAuroraA {
+  0% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(70px) hue-rotate(0deg);
+  }
+  22% {
+    transform: translate(70px, 50px) scale(1.18);
+    filter: blur(85px) hue-rotate(18deg);
+  }
+  48% {
+    transform: translate(-50px, 90px) scale(0.92);
+    filter: blur(60px) hue-rotate(-14deg);
+  }
+  74% {
+    transform: translate(60px, -40px) scale(1.12);
+    filter: blur(90px) hue-rotate(24deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(70px) hue-rotate(0deg);
+  }
+}
+
+@keyframes hyAuroraB {
+  0% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(75px) hue-rotate(0deg);
+  }
+  30% {
+    transform: translate(-60px, -60px) scale(1.15);
+    filter: blur(55px) hue-rotate(-20deg);
+  }
+  55% {
+    transform: translate(80px, -20px) scale(0.9);
+    filter: blur(95px) hue-rotate(16deg);
+  }
+  80% {
+    transform: translate(-30px, 60px) scale(1.1);
+    filter: blur(70px) hue-rotate(-10deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(75px) hue-rotate(0deg);
+  }
+}
+
+@keyframes hyAuroraC {
+  0% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(80px) hue-rotate(0deg);
+  }
+  35% {
+    transform: translate(45px, -70px) scale(1.2);
+    filter: blur(60px) hue-rotate(22deg);
+  }
+  60% {
+    transform: translate(-70px, -20px) scale(0.88);
+    filter: blur(100px) hue-rotate(-18deg);
+  }
+  85% {
+    transform: translate(30px, 55px) scale(1.05);
+    filter: blur(75px) hue-rotate(12deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(80px) hue-rotate(0deg);
+  }
+}
+
+.hy-aurora-a {
+  animation: hyAuroraA 46s ease-in-out infinite;
+}
+.hy-aurora-b {
+  animation: hyAuroraB 58s ease-in-out infinite;
+  animation-delay: -12s;
+}
+.hy-aurora-c {
+  animation: hyAuroraC 63s ease-in-out infinite;
+  animation-delay: -30s;
+}
 
 .hy-hide-scrollbar {
   scrollbar-width: none;
@@ -175,8 +286,6 @@ button {
   transform: translateY(-4px);
 }
 
-/* --- Buttons ------------------------------------------------------------- */
-
 .hy-btn {
   display: inline-flex;
   align-items: center;
@@ -233,8 +342,6 @@ button {
   color: #fff;
 }
 
-/* --- Misc ---------------------------------------------------------------- */
-
 .hy-dropdown-item {
   transition: background 0.15s ease;
 }
@@ -281,8 +388,6 @@ button {
   text-overflow: ellipsis;
 }
 
-/* --- Responsive grid collapse -------------------------------------------- */
-
 @media (max-width: 980px) {
   .hy-split {
     grid-template-columns: 1fr !important;
@@ -295,6 +400,9 @@ button {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   .hy-nav-links {
+    display: none !important;
+  }
+  .hy-navbar-cta {
     display: none !important;
   }
   .hy-mobile-toggle {
@@ -322,7 +430,10 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .hy-drift-a,
   .hy-drift-b,
-  .hy-pulse {
+  .hy-pulse,
+  .hy-aurora-a,
+  .hy-aurora-b,
+  .hy-aurora-c {
     animation: none;
   }
 }

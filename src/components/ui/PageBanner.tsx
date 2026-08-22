@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { brand, fonts, layout } from '../../constants/theme';
 
 interface PageBannerProps {
   eyebrow: string;
@@ -27,123 +26,40 @@ export function PageBanner({
 }: PageBannerProps) {
   return (
     <section
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        padding: compact ? `100px ${layout.gutter}px 64px` : `140px ${layout.gutter}px`,
-        minHeight: compact ? 320 : 380,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: align === 'center' ? 'center' : 'flex-start',
-        textAlign: align,
-        background: brand.navy,
-      }}
+      className={`relative flex items-center overflow-hidden bg-navy px-8 ${
+        compact ? 'pt-[100px] pb-16 min-h-80' : 'py-[140px] min-h-[380px]'
+      } ${align === 'center' ? 'justify-center text-center' : 'justify-start text-left'}`}
     >
       {image ? (
         <img
           src={image}
           alt=""
           aria-hidden
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
+          className="absolute inset-0 h-full w-full object-cover"
         />
       ) : (
         <>
-          <div
-            className="hy-drift-a"
-            style={{
-              position: 'absolute',
-              top: -80,
-              left: -60,
-              width: 340,
-              height: 340,
-              borderRadius: 999,
-              background: 'radial-gradient(circle, oklch(0.5 0.2 264 / 0.55), transparent 70%)',
-              pointerEvents: 'none',
-            }}
-          />
-          <div
-            className="hy-drift-b"
-            style={{
-              position: 'absolute',
-              bottom: -100,
-              right: -40,
-              width: 380,
-              height: 380,
-              borderRadius: 999,
-              background: 'radial-gradient(circle, oklch(0.79 0.135 84 / 0.35), transparent 70%)',
-              pointerEvents: 'none',
-            }}
-          />
-          <div
-            className="hy-pulse"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: 'radial-gradient(oklch(1 0 0 / 0.12) 1px, transparent 1px)',
-              backgroundSize: '34px 34px',
-              pointerEvents: 'none',
-            }}
-          />
+          <div className="hy-drift-a pointer-events-none absolute top-[-80px] left-[-60px] h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle,oklch(0.5_0.2_264/0.55),transparent_70%)]" />
+          <div className="hy-drift-b pointer-events-none absolute right-[-40px] bottom-[-100px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,oklch(0.79_0.135_84/0.35),transparent_70%)]" />
+          <div className="hy-pulse pointer-events-none absolute inset-0 bg-[radial-gradient(oklch(1_0_0/0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
         </>
       )}
 
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: `linear-gradient(to bottom, transparent, ${brand.navy} 85%)`,
-        }}
-      />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,var(--navy)_85%)]" />
 
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          width: '100%',
-          maxWidth: align === 'center' ? undefined : 1000,
-          margin: align === 'center' ? undefined : '0 auto',
-        }}
-      >
+      <div className={`relative z-[1] w-full ${align === 'center' ? '' : 'mx-auto max-w-[1000px]'}`}>
         {children}
-        <span
-          style={{
-            fontFamily: fonts.mono,
-            fontSize: 11,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: brand.goldLight,
-          }}
-        >
+        <span className="font-mono text-[11px] tracking-[0.14em] text-gold-light uppercase">
           {eyebrow}
         </span>
-        <h1
-          className="hy-h1"
-          style={{
-            margin: '16px 0 0',
-            fontFamily: fonts.display,
-            fontWeight: 800,
-            fontSize: 40,
-            lineHeight: 1.15,
-            color: '#fff',
-          }}
-        >
+        <h1 className="hy-h1 mx-0 mt-4 mb-0 font-display text-[40px] font-extrabold leading-[1.15] text-white">
           {title}
         </h1>
         {description ? (
           <p
-            style={{
-              margin: align === 'center' ? '16px auto 0' : '16px 0 0',
-              maxWidth: 640,
-              color: 'oklch(1 0 0 / 0.75)',
-              fontSize: 15,
-              lineHeight: 1.6,
-            }}
+            className={`mt-4 mb-0 max-w-[640px] text-[15px] leading-[1.6] text-white/75 ${
+              align === 'center' ? 'mx-auto' : 'mx-0'
+            }`}
           >
             {description}
           </p>

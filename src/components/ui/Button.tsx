@@ -11,10 +11,10 @@ const variantClass: Record<ButtonVariant, string> = {
   outlineBlue: 'hy-btn hy-btn-outline-blue',
 };
 
-const sizeStyle: Record<ButtonSize, CSSProperties> = {
-  sm: { padding: '13px 22px', fontSize: 14 },
-  md: { padding: '14px 24px', fontSize: 14 },
-  lg: { padding: '15px 26px', fontSize: 15 },
+const sizeClass: Record<ButtonSize, string> = {
+  sm: 'py-[13px] px-[22px] text-[14px]',
+  md: 'py-[14px] px-6 text-[14px]',
+  lg: 'py-[15px] px-[26px] text-[15px]',
 };
 
 interface CommonProps {
@@ -41,16 +41,11 @@ export type ButtonProps = LinkButtonProps | ActionButtonProps;
 
 export function Button(props: ButtonProps) {
   const { variant = 'gold', size = 'md', children, style, fullWidth } = props;
-  const className = variantClass[variant];
-  const composed: CSSProperties = {
-    ...sizeStyle[size],
-    ...(fullWidth ? { width: '100%' } : null),
-    ...style,
-  };
+  const className = `${variantClass[variant]} ${sizeClass[size]}${fullWidth ? ' w-full' : ''}`;
 
   if ('to' in props && props.to) {
     return (
-      <Link to={props.to} className={className} style={composed}>
+      <Link to={props.to} className={className} style={style}>
         {children}
       </Link>
     );
@@ -61,7 +56,7 @@ export function Button(props: ButtonProps) {
       type={props.type ?? 'button'}
       onClick={props.onClick}
       className={className}
-      style={composed}
+      style={style}
     >
       {children}
     </button>

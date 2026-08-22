@@ -1,9 +1,12 @@
 import { useMemo, useState } from 'react';
-import { ImageIcon } from 'lucide-react';
 import { PageBanner } from '../components/ui/PageBanner';
 import { Section } from '../components/ui/Section';
-import { gallery, galleryFilters, type GalleryCategory } from '../constants/gallery';
-import { brand, fonts, t } from '../constants/theme';
+import {
+  gallery,
+  galleryCategoryImages,
+  galleryFilters,
+  type GalleryCategory,
+} from '../constants/gallery';
 
 type Filter = 'All' | GalleryCategory;
 
@@ -20,7 +23,7 @@ export function GalleryScreen() {
       <PageBanner eyebrow="Gallery" title="Life at Hyperion" />
 
       <Section background="page" padding="56px" style={{ paddingBottom: 96 }}>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <div className="flex flex-wrap gap-2">
           {galleryFilters.map((cat) => {
             const isActive = filter === cat;
             return (
@@ -29,17 +32,9 @@ export function GalleryScreen() {
                 type="button"
                 onClick={() => setFilter(cat)}
                 aria-pressed={isActive}
-                style={{
-                  background: isActive ? brand.navy : t.cardBg,
-                  color: isActive ? '#ffffff' : t.text,
-                  border: `1px solid ${t.border}`,
-                  borderRadius: 999,
-                  padding: '8px 16px',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: 'background 0.2s ease, color 0.2s ease',
-                }}
+                className={`cursor-pointer rounded-full border border-line px-4 py-2 text-[13px] font-semibold transition-colors duration-200 ${
+                  isActive ? 'bg-navy text-white' : 'bg-card text-ink'
+                }`}
               >
                 {cat}
               </button>
@@ -47,54 +42,16 @@ export function GalleryScreen() {
           })}
         </div>
 
-        <div
-          className="hy-grid-4"
-          style={{
-            marginTop: 32,
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 16,
-          }}
-        >
+        <div className="hy-grid-4 mt-8 grid grid-cols-4 gap-4">
           {visible.map((item) => (
-            <div
-              key={item.id}
-              className="hy-lift-sm"
-              style={{ display: 'flex', flexDirection: 'column', gap: 8 }}
-            >
-              {/*
-                The mockup left every gallery slot empty (no uploaded photos),
-                so each tile renders as a labelled placeholder.
-              */}
-              <div
-                style={{
-                  width: '100%',
-                  aspectRatio: '1',
-                  borderRadius: 14,
-                  background: t.altBg,
-                  border: `1px solid ${t.border}`,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 10,
-                  padding: 16,
-                  textAlign: 'center',
-                }}
-              >
-                <ImageIcon size={22} color={t.textMuted} aria-hidden />
-                <span
-                  style={{
-                    fontFamily: fonts.mono,
-                    fontSize: 11,
-                    lineHeight: 1.45,
-                    color: t.textMuted,
-                  }}
-                >
-                  {item.title}
-                </span>
-              </div>
-              <p style={{ margin: 0, fontSize: 12, color: t.textMuted }}>{item.category}</p>
+            <div key={item.id} className="hy-lift-sm flex flex-col gap-2">
+              <img
+                src={galleryCategoryImages[item.category]}
+                alt={item.title}
+                loading="lazy"
+                className="aspect-square w-full rounded-[14px] border border-line bg-alt object-cover"
+              />
+              <p className="m-0 text-xs text-ink-muted">{item.category}</p>
             </div>
           ))}
         </div>
