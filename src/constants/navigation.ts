@@ -77,7 +77,7 @@ export interface FooterLink {
 
 export const footerCompanyLinks: FooterLink[] = [
   { label: 'About Us', to: routes.about },
-  { label: 'The Founder', to: routes.founder },
+  { label: 'The Team', to: routes.founder },
   { label: 'Blog', to: routes.blog },
   { label: 'Contact', to: routes.contact },
 ];

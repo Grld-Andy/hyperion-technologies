@@ -28,9 +28,9 @@ function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-navy px-8 pt-24 pb-[72px]">
-      <AuroraBlobs />
       <div className="hy-pulse pointer-events-none absolute inset-0 bg-[radial-gradient(oklch(1_0_0/0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent,var(--navy)_85%)]" />
+      <AuroraBlobs />
 
       <div className="hy-split relative z-[1] mx-auto grid max-w-[1280px] grid-cols-[1.1fr_0.9fr] items-center gap-16">
         <motion.div
