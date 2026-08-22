@@ -1,7 +1,7 @@
 export const routes = {
   home: '/',
   about: '/about',
-  founder: '/founder',
+  founder: '/team',
   services: '/services',
   certifications: '/certifications',
   certificationDetail: (slug: string) => `/certifications/${slug}`,
