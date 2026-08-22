@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { AuroraBlobs } from '../components/AuroraBlobs';
 import { BlogCard } from '../components/cards/BlogCard';
 import { CertCard } from '../components/cards/CertCard';
 import { FeatureCard } from '../components/cards/FeatureCard';
@@ -27,9 +28,7 @@ function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-navy px-8 pt-24 pb-[72px]">
-      <div className="hy-aurora-a pointer-events-none absolute top-[-80px] left-[-60px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.5_0.2_264/0.55),transparent_70%)]" />
-      <div className="hy-aurora-b pointer-events-none absolute right-[-40px] bottom-[-100px] h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,oklch(0.79_0.135_84/0.35),transparent_70%)]" />
-      <div className="hy-aurora-c pointer-events-none absolute top-[10%] left-[32%] h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,oklch(0.65_0.16_200/0.28),transparent_70%)]" />
+      <AuroraBlobs />
       <div className="hy-pulse pointer-events-none absolute inset-0 bg-[radial-gradient(oklch(1_0_0/0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent,var(--navy)_85%)]" />
 
@@ -118,7 +117,7 @@ export function HomeScreen() {
             eyebrow="Certification Tracks"
             title="Five certifications. One clear path forward."
           />
-          <div className="hy-hide-scrollbar mt-12 flex gap-4 overflow-x-auto py-4 [scroll-snap-type:x_proximity]">
+          <div className="hy-hide-scrollbar mt-6 flex gap-4 overflow-x-auto py-10 [scroll-snap-type:x_proximity]">
             {certifications.map((cert) => (
               <CertCard key={cert.slug} cert={cert} variant="carousel" />
             ))}
