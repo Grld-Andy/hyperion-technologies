@@ -1,5 +1,5 @@
 import { BadgeCheck, Briefcase, GraduationCap } from 'lucide-react';
-import founderPortrait from '../assets/founder-portrait.webp';
+import founderPortrait from '../assets/team/Michael Quarshie.jpeg';
 import { TeamCard } from '../components/cards/TeamCard';
 import { Section } from '../components/ui/Section';
 import { SectionHeading } from '../components/ui/SectionHeading';
