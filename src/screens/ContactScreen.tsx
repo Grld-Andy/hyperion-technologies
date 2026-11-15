@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { certifications } from '../constants/certifications';
 import { site } from '../constants/site';
@@ -48,6 +49,7 @@ export function ContactScreen() {
   return (
     <>
       <PageBanner
+        image={bannerImages.contact}
         eyebrow="Contact"
         title="Talk to an Advisor"
         description="Questions about a certification track or a service request, reach out and we'll get back to you."

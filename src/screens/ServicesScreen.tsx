@@ -1,5 +1,6 @@
 import { ServiceCard } from '../components/cards/ServiceCard';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { services } from '../constants/services';
 
@@ -7,6 +8,7 @@ export function ServicesScreen() {
   return (
     <>
       <PageBanner
+        image={bannerImages.services}
         eyebrow="What We Do"
         title="Full-spectrum IT services"
         description="Certification training is our specialty, but our team supports the everyday technology needs of individuals, businesses, and schools."

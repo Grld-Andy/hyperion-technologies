@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { CheckList } from '../components/ui/CheckList';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { getCertification } from '../constants/certifications';
 import { routes } from '../constants/navigation';
@@ -17,6 +18,7 @@ export function CertificationDetailScreen() {
   return (
     <>
       <PageBanner
+        image={bannerImages.certificationDetail}
         eyebrow={`${cert.vendor} · ${cert.level}`}
         title={cert.name}
         description={cert.tagline}

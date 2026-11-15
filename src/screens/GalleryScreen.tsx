@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import {
   gallery,
@@ -20,7 +21,7 @@ export function GalleryScreen() {
 
   return (
     <>
-      <PageBanner eyebrow="Gallery" title="Life at Hyperion" />
+      <PageBanner eyebrow="Gallery" title="Life at Hyperion" image={bannerImages.gallery} />
 
       <Section background="page" padding="56px" style={{ paddingBottom: 96 }}>
         <div className="flex flex-wrap gap-2">

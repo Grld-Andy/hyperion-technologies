@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { CertCard } from '../components/cards/CertCard';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { certGroupCopy, certifications } from '../constants/certifications';
 
@@ -21,6 +22,7 @@ export function CertificationsScreen({ group = 'all' }: { group?: CertGroup }) {
   return (
     <>
       <PageBanner
+        image={bannerImages.certifications}
         eyebrow={copy.eyebrow}
         title={copy.title}
         description={copy.description}

@@ -3,6 +3,7 @@ import aboutStory from '../assets/about-story.webp';
 import { ValueCard } from '../components/cards/ValueCard';
 import { Button } from '../components/ui/Button';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { routes } from '../constants/navigation';
@@ -12,7 +13,7 @@ import { values } from '../constants/values';
 export function AboutScreen() {
   return (
     <>
-      <PageBanner eyebrow="About Us" title={site.name} description={site.description} />
+      <PageBanner eyebrow="About Us" title={site.name} description={site.description} image={bannerImages.about} />
 
       <Section background="page">
         <div className="hy-split grid grid-cols-2 items-center gap-14">

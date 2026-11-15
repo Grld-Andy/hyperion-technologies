@@ -39,13 +39,20 @@ export function PageBanner({
         />
       ) : (
         <>
-          <div className="hy-drift-a pointer-events-none absolute top-[-80px] left-[-60px] h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle,oklch(0.5_0.2_264/0.55),transparent_70%)]" />
-          <div className="hy-drift-b pointer-events-none absolute right-[-40px] bottom-[-100px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,oklch(0.79_0.135_84/0.35),transparent_70%)]" />
+          <div className="hy-drift-a pointer-events-none absolute top-[-80px] left-[-60px] h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle,oklch(0.5_0.2_264/0.35),transparent_70%)]" />
+          <div className="hy-drift-b pointer-events-none absolute right-[-40px] bottom-[-100px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,oklch(0.79_0.135_84/0.15),transparent_70%)]" />
           <div className="hy-pulse pointer-events-none absolute inset-0 bg-[radial-gradient(oklch(1_0_0/0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
         </>
       )}
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,var(--navy)_85%)]" />
+      {image ? <div className="absolute inset-0 bg-navy/40" /> : null}
+      <div
+        className={`absolute inset-0 ${
+          image
+            ? 'bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--navy)_55%,transparent)_85%)]'
+            : 'bg-[linear-gradient(to_bottom,transparent,var(--navy)_85%)]'
+        }`}
+      />
 
       <div className={`relative z-[1] w-full ${align === 'center' ? '' : 'mx-auto max-w-[1000px]'}`}>
         {children}

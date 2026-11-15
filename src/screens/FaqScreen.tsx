@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Minus, Plus } from 'lucide-react';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { DEFAULT_OPEN_FAQ_KEY, groupedFaqs } from '../constants/faq';
 
@@ -9,7 +10,7 @@ export function FaqScreen() {
 
   return (
     <>
-      <PageBanner eyebrow="FAQ" title="Frequently Asked Questions" />
+      <PageBanner eyebrow="FAQ" title="Frequently Asked Questions" image={bannerImages.faq} />
 
       <Section background="page" padding="56px" maxWidth={760} style={{ paddingBottom: 96 }}>
         {groupedFaqs.map((group) => (

@@ -1,13 +1,14 @@
 import { FileText } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { PageBanner } from '../components/ui/PageBanner';
+import { bannerImages } from '../constants/bannerImages';
 import { Section } from '../components/ui/Section';
 import { routes } from '../constants/navigation';
 
 export function BlogScreen() {
   return (
     <>
-      <PageBanner eyebrow="Blog" title="Insights & Updates" />
+      <PageBanner eyebrow="Blog" title="Insights & Updates" image={bannerImages.blog} />
       <Section background="page" padding="120px" align="center" maxWidth={480}>
         <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-alt">
           <FileText size={24} className="text-blue" aria-hidden />
